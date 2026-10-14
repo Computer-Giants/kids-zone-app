@@ -1,5 +1,5 @@
 {
-  "name": "@template/validators",
+  "name": "@kidzone/validators",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -14,7 +14,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@template/config": "workspace:*",
+    "@kidzone/config": "workspace:*",
     "@types/node": "^22.10.2",
     "typescript": "^5.7.2"
   }

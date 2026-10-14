@@ -1,0 +1,1100 @@
+{
+  "meta": {
+    "name": "Kid Zone design system",
+    "version": "0.2.0",
+    "theme": "light",
+    "styleDescriptors": [
+      "storybook",
+      "sticker-buttons",
+      "rounded",
+      "warm-cream-canvas",
+      "journey-path-progress",
+      "mascot-led",
+      "liturgical-season-accents",
+      "rainbow-sections",
+      "orange-brand-standout"
+    ],
+    "provenance": {
+      "note": "Values are project decisions unless a reference is named. Reference pages were fetched as text/metadata only (no screenshots or computed CSS), so reference styling is NOT measured.",
+      "verifiedFromReferences": {
+        "playmagicreef.com": {
+          "themeColor": "#2a52d8",
+          "structure": "plain hero heading on background, one primary CTA, 3-step 'how it works', use-case carousel 01/03, single closing CTA, simple footer"
+        },
+        "papumba.com": {
+          "structure": "announcement bar > nav (Home, For Parents, For Teachers, About, News, primary CTA) > hero (title, trust line, stats) > product video on device frames > awards strip > 4 activity modes (Play, Explore, Listen, Read) as illustrated panels > parent/teacher resources > new-releases carousel > testimonials > download CTA > illustrated footer"
+        }
+      },
+      "unverified": {
+        "coddy.tech/journeys": "Page body is client-rendered and returned metadata only. 'Journey' pattern (ordered path of lesson nodes with progress) is taken from the URL and your description; exact styling is UNKNOWN.",
+        "themagicalpantry.com": "Blocked automated access. No data. UNKNOWN."
+      }
+    },
+    "confidence": {
+      "tokens": "high (project-defined)",
+      "referenceMatch": "low-medium (structure only)",
+      "contrast": "computed, WCAG 2.x relative luminance"
+    }
+  },
+  "tokens": {
+    "primitive": {
+      "color": {
+        "cream": {
+          "hex": "#fffaf0",
+          "oklch": "oklch(0.986 0.014 85)"
+        },
+        "white": {
+          "hex": "#ffffff",
+          "oklch": "oklch(1.000 0.000 90)"
+        },
+        "sand": {
+          "hex": "#fff1d6",
+          "oklch": "oklch(0.962 0.038 84)"
+        },
+        "sandBorder": {
+          "hex": "#f0e2c0",
+          "oklch": "oklch(0.915 0.047 88)"
+        },
+        "ink": {
+          "hex": "#2b2d42",
+          "oklch": "oklch(0.305 0.038 280)"
+        },
+        "inkSoft": {
+          "hex": "#5c5f7a",
+          "oklch": "oklch(0.493 0.043 280)"
+        },
+        "slate": {
+          "hex": "#5f6475",
+          "oklch": "oklch(0.505 0.028 272)"
+        },
+        "slateTint": {
+          "hex": "#eceef3",
+          "oklch": "oklch(0.949 0.007 269)"
+        },
+        "orange": {
+          "hex": "#ff7a1a",
+          "oklch": "oklch(0.724 0.187 49)"
+        },
+        "orangeDeep": {
+          "hex": "#a63f08",
+          "oklch": "oklch(0.504 0.148 42)"
+        },
+        "orangeTint": {
+          "hex": "#ffe8d6",
+          "oklch": "oklch(0.945 0.035 60)"
+        },
+        "red": {
+          "hex": "#ec4466",
+          "oklch": "oklch(0.638 0.204 14)"
+        },
+        "redDeep": {
+          "hex": "#b01f45",
+          "oklch": "oklch(0.497 0.179 13)"
+        },
+        "redTint": {
+          "hex": "#ffe1e8",
+          "oklch": "oklch(0.936 0.034 2)"
+        },
+        "yellow": {
+          "hex": "#ffd23f",
+          "oklch": "oklch(0.879 0.162 91)"
+        },
+        "yellowDeep": {
+          "hex": "#7a5a00",
+          "oklch": "oklch(0.488 0.100 84)"
+        },
+        "yellowTint": {
+          "hex": "#fff6cc",
+          "oklch": "oklch(0.970 0.055 97)"
+        },
+        "green": {
+          "hex": "#35c76a",
+          "oklch": "oklch(0.733 0.179 151)"
+        },
+        "greenDeep": {
+          "hex": "#16793c",
+          "oklch": "oklch(0.507 0.128 151)"
+        },
+        "greenTint": {
+          "hex": "#dcf7e5",
+          "oklch": "oklch(0.952 0.037 156)"
+        },
+        "blue": {
+          "hex": "#3d8bff",
+          "oklch": "oklch(0.648 0.189 259)"
+        },
+        "blueDeep": {
+          "hex": "#2a52d8",
+          "oklch": "oklch(0.499 0.210 266)"
+        },
+        "blueTint": {
+          "hex": "#e0ecff",
+          "oklch": "oklch(0.940 0.029 260)"
+        },
+        "indigo": {
+          "hex": "#5b5bd6",
+          "oklch": "oklch(0.540 0.184 278)"
+        },
+        "indigoDeep": {
+          "hex": "#3b3ba8",
+          "oklch": "oklch(0.424 0.170 276)"
+        },
+        "indigoTint": {
+          "hex": "#e6e6fb",
+          "oklch": "oklch(0.931 0.028 286)"
+        },
+        "violet": {
+          "hex": "#a259ff",
+          "oklch": "oklch(0.631 0.235 300)"
+        },
+        "violetDeep": {
+          "hex": "#7127c9",
+          "oklch": "oklch(0.480 0.226 298)"
+        },
+        "violetTint": {
+          "hex": "#f0e4ff",
+          "oklch": "oklch(0.936 0.038 306)"
+        }
+      },
+      "space": {
+        "1": "4px",
+        "2": "8px",
+        "3": "12px",
+        "4": "16px",
+        "5": "24px",
+        "6": "32px",
+        "7": "48px",
+        "8": "64px",
+        "9": "96px"
+      },
+      "radius": {
+        "sm": "12px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "28px",
+        "pill": "9999px",
+        "blob": "60% 40% 55% 45% / 50% 55% 45% 50%"
+      },
+      "shadow": {
+        "stickerOrange": {
+          "offsetX": 0,
+          "offsetY": 6,
+          "blur": 0,
+          "spread": 0,
+          "color": "#a63f08",
+          "opacity": 1.0
+        },
+        "stickerRed": {
+          "offsetX": 0,
+          "offsetY": 6,
+          "blur": 0,
+          "spread": 0,
+          "color": "#b01f45",
+          "opacity": 1.0
+        },
+        "stickerYellow": {
+          "offsetX": 0,
+          "offsetY": 6,
+          "blur": 0,
+          "spread": 0,
+          "color": "#7a5a00",
+          "opacity": 1.0
+        },
+        "stickerGreen": {
+          "offsetX": 0,
+          "offsetY": 6,
+          "blur": 0,
+          "spread": 0,
+          "color": "#16793c",
+          "opacity": 1.0
+        },
+        "stickerBlue": {
+          "offsetX": 0,
+          "offsetY": 6,
+          "blur": 0,
+          "spread": 0,
+          "color": "#2a52d8",
+          "opacity": 1.0
+        },
+        "stickerIndigo": {
+          "offsetX": 0,
+          "offsetY": 6,
+          "blur": 0,
+          "spread": 0,
+          "color": "#3b3ba8",
+          "opacity": 1.0
+        },
+        "stickerViolet": {
+          "offsetX": 0,
+          "offsetY": 6,
+          "blur": 0,
+          "spread": 0,
+          "color": "#7127c9",
+          "opacity": 1.0
+        },
+        "stickerSlate": {
+          "offsetX": 0,
+          "offsetY": 6,
+          "blur": 0,
+          "spread": 0,
+          "color": "#2b2d42",
+          "opacity": 0.35
+        },
+        "stickerPressed": {
+          "offsetX": 0,
+          "offsetY": 2,
+          "blur": 0,
+          "spread": 0,
+          "color": "inherit-from-variant",
+          "opacity": 1.0
+        },
+        "cardRest": {
+          "offsetX": 0,
+          "offsetY": 4,
+          "blur": 0,
+          "spread": 0,
+          "color": "#f0e2c0",
+          "opacity": 1.0
+        },
+        "cardHover": {
+          "offsetX": 0,
+          "offsetY": 10,
+          "blur": 0,
+          "spread": 0,
+          "color": "#f0e2c0",
+          "opacity": 1.0
+        }
+      },
+      "duration": {
+        "instant": "0ms",
+        "fast": "120ms",
+        "base": "200ms",
+        "slow": "400ms",
+        "celebrate": "900ms"
+      },
+      "easing": {
+        "standard": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+        "overshoot": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "exit": "cubic-bezier(0.4, 0, 1, 1)"
+      }
+    },
+    "semantic": {
+      "surface": {
+        "page": "{color.cream}",
+        "card": "{color.white}",
+        "muted": "{color.sand}",
+        "gate": "{color.slateTint}"
+      },
+      "text": {
+        "primary": "{color.ink}",
+        "secondary": "{color.inkSoft}",
+        "onDeep": "{color.white}",
+        "onYellow": "{color.ink}",
+        "onBase": "{color.ink} on orange, yellow, green base fills"
+      },
+      "border": {
+        "default": "{color.sandBorder}",
+        "focus": "{color.blueDeep}"
+      },
+      "accent": {
+        "brand": {
+          "base": "{color.orange}",
+          "deep": "{color.orangeDeep}",
+          "tint": "{color.orangeTint}",
+          "role": "standout colour: primary call to action, Continue, mascot accent, streak flame, logo"
+        },
+        "bible": {
+          "base": "{color.blue}",
+          "deep": "{color.blueDeep}",
+          "tint": "{color.blueTint}",
+          "role": "Children's Bible"
+        },
+        "saints": {
+          "base": "{color.yellow}",
+          "deep": "{color.yellowDeep}",
+          "tint": "{color.yellowTint}",
+          "role": "Saints and Catechism (halo gold)"
+        },
+        "quizzes": {
+          "base": "{color.red}",
+          "deep": "{color.redDeep}",
+          "tint": "{color.redTint}",
+          "role": "Quizzes"
+        },
+        "games": {
+          "base": "{color.green}",
+          "deep": "{color.greenDeep}",
+          "tint": "{color.greenTint}",
+          "role": "Games and puzzles"
+        },
+        "stories": {
+          "base": "{color.indigo}",
+          "deep": "{color.indigoDeep}",
+          "tint": "{color.indigoTint}",
+          "role": "Stories"
+        },
+        "chat": {
+          "base": "{color.violet}",
+          "deep": "{color.violetDeep}",
+          "tint": "{color.violetTint}",
+          "role": "Chat"
+        },
+        "parent": {
+          "base": "{color.slate}",
+          "tint": "{color.slateTint}",
+          "role": "Parent gate and settings"
+        }
+      },
+      "feedback": {
+        "success": "{color.greenDeep}",
+        "successTint": "{color.greenTint}",
+        "gentleRetry": "{color.yellowDeep}",
+        "gentleRetryTint": "{color.yellowTint}",
+        "error": "{color.redDeep}"
+      },
+      "season": {
+        "note": "Optional accent override set via data-season on <html>. Changes hero backdrop tint and mascot accessory only; never text or button colours (keeps contrast guarantees).",
+        "advent": "{color.seasonPurple}",
+        "lent": "{color.seasonPurple}",
+        "christmas": "{color.seasonWhiteGold}",
+        "easter": "{color.seasonWhiteGold}",
+        "ordinary": "{color.seasonGreen}"
+      }
+    },
+    "typography": {
+      "families": {
+        "heading": {
+          "name": "Fredoka",
+          "fallback": "ui-rounded, system-ui, sans-serif",
+          "source": "next/font/google",
+          "cssVar": "--font-fredoka"
+        },
+        "body": {
+          "name": "Nunito",
+          "fallback": "ui-rounded, system-ui, sans-serif",
+          "source": "next/font/google",
+          "cssVar": "--font-nunito"
+        },
+        "scripture": {
+          "name": "Merriweather",
+          "fallback": "Georgia, serif",
+          "source": "next/font/google",
+          "cssVar": "--font-merriweather",
+          "usage": "Bible verses and prayers only"
+        }
+      },
+      "scale": {
+        "body": "1.125rem",
+        "bodyLarge": "1.375rem",
+        "scripture": "1.5rem",
+        "h3": "1.5rem",
+        "h2": "clamp(1.75rem, 1.4rem + 1.5vw, 2.25rem)",
+        "h1": "clamp(2.25rem, 1.5rem + 3.5vw, 3.75rem)",
+        "label": "1rem",
+        "button": "1.125rem",
+        "buttonLarge": "1.25rem"
+      },
+      "weights": {
+        "body": 400,
+        "bodyStrong": 700,
+        "heading": 600,
+        "button": 700
+      },
+      "lineHeights": {
+        "body": 1.6,
+        "heading": 1.15,
+        "scripture": 1.8
+      },
+      "tracking": {
+        "heading": "-0.01em",
+        "body": "0",
+        "button": "0.01em"
+      },
+      "fluid": "h1 and h2 use clamp() above; body stays fixed so reading size never drops below 18px"
+    },
+    "color": {
+      "format": "hex + oklch",
+      "contrast": [
+        {
+          "pair": "text.primary on surface.page",
+          "fg": "#2b2d42",
+          "bg": "#fffaf0",
+          "ratio": 12.97,
+          "required": 4.5,
+          "pass": true
+        },
+        {
+          "pair": "text.primary on surface.card",
+          "fg": "#2b2d42",
+          "bg": "#ffffff",
+          "ratio": 13.49,
+          "required": 4.5,
+          "pass": true
+        },
+        {
+          "pair": "text.secondary on surface.page",
+          "fg": "#5c5f7a",
+          "bg": "#fffaf0",
+          "ratio": 5.98,
+          "required": 4.5,
+          "pass": true
+        },
+        {
+          "pair": "button.orange: ink on base",
+          "fg": "#2b2d42",
+          "bg": "#ff7a1a",
+          "ratio": 5.17,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "text orangeDeep on orangeTint",
+          "fg": "#a63f08",
+          "bg": "#ffe8d6",
+          "ratio": 5.33,
+          "required": 4.5,
+          "pass": true
+        },
+        {
+          "pair": "focus ring blueDeep on orangeTint",
+          "fg": "#2a52d8",
+          "bg": "#ffe8d6",
+          "ratio": 5.39,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "button.red: white on deep",
+          "fg": "#ffffff",
+          "bg": "#b01f45",
+          "ratio": 6.71,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "text redDeep on redTint",
+          "fg": "#b01f45",
+          "bg": "#ffe1e8",
+          "ratio": 5.49,
+          "required": 4.5,
+          "pass": true
+        },
+        {
+          "pair": "focus ring blueDeep on redTint",
+          "fg": "#2a52d8",
+          "bg": "#ffe1e8",
+          "ratio": 5.21,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "button.yellow: ink on base",
+          "fg": "#2b2d42",
+          "bg": "#ffd23f",
+          "ratio": 9.34,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "text yellowDeep on yellowTint",
+          "fg": "#7a5a00",
+          "bg": "#fff6cc",
+          "ratio": 5.87,
+          "required": 4.5,
+          "pass": true
+        },
+        {
+          "pair": "focus ring blueDeep on yellowTint",
+          "fg": "#2a52d8",
+          "bg": "#fff6cc",
+          "ratio": 5.86,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "button.green: ink on base",
+          "fg": "#2b2d42",
+          "bg": "#35c76a",
+          "ratio": 6.12,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "text greenDeep on greenTint",
+          "fg": "#16793c",
+          "bg": "#dcf7e5",
+          "ratio": 4.82,
+          "required": 4.5,
+          "pass": true
+        },
+        {
+          "pair": "focus ring blueDeep on greenTint",
+          "fg": "#2a52d8",
+          "bg": "#dcf7e5",
+          "ratio": 5.6,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "button.blue: white on deep",
+          "fg": "#ffffff",
+          "bg": "#2a52d8",
+          "ratio": 6.37,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "text blueDeep on blueTint",
+          "fg": "#2a52d8",
+          "bg": "#e0ecff",
+          "ratio": 5.34,
+          "required": 4.5,
+          "pass": true
+        },
+        {
+          "pair": "focus ring blueDeep on blueTint",
+          "fg": "#2a52d8",
+          "bg": "#e0ecff",
+          "ratio": 5.34,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "button.indigo: white on deep",
+          "fg": "#ffffff",
+          "bg": "#3b3ba8",
+          "ratio": 8.83,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "text indigoDeep on indigoTint",
+          "fg": "#3b3ba8",
+          "bg": "#e6e6fb",
+          "ratio": 7.18,
+          "required": 4.5,
+          "pass": true
+        },
+        {
+          "pair": "focus ring blueDeep on indigoTint",
+          "fg": "#2a52d8",
+          "bg": "#e6e6fb",
+          "ratio": 5.18,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "button.violet: white on deep",
+          "fg": "#ffffff",
+          "bg": "#7127c9",
+          "ratio": 7.41,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "text violetDeep on violetTint",
+          "fg": "#7127c9",
+          "bg": "#f0e4ff",
+          "ratio": 6.08,
+          "required": 4.5,
+          "pass": true
+        },
+        {
+          "pair": "focus ring blueDeep on violetTint",
+          "fg": "#2a52d8",
+          "bg": "#f0e4ff",
+          "ratio": 5.23,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "button.parent: white on slate",
+          "fg": "#ffffff",
+          "bg": "#5f6475",
+          "ratio": 5.89,
+          "required": 3.0,
+          "pass": true
+        },
+        {
+          "pair": "focus ring blueDeep on surface.page",
+          "fg": "#2a52d8",
+          "bg": "#fffaf0",
+          "ratio": 6.12,
+          "required": 3.0,
+          "pass": true
+        }
+      ]
+    }
+  },
+  "layout": {
+    "grid": {
+      "mobile": "4 columns, 16px gutter",
+      "tablet": "8 columns, 24px gutter",
+      "desktop": "12 columns, 32px gutter"
+    },
+    "containerWidths": {
+      "content": "1120px",
+      "reading": "680px",
+      "quiz": "720px"
+    },
+    "breakpoints": {
+      "sm": "40rem",
+      "md": "48rem",
+      "lg": "64rem",
+      "xl": "80rem",
+      "note": "Tailwind v4 defaults; design mobile first"
+    },
+    "spacingRhythm": "4px base; vertical rhythm between page sections 64px mobile / 96px desktop; inside cards 24px",
+    "patterns": ["stacked", "bento"],
+    "pageFlow": {
+      "reference": "papumba.com section order, adapted",
+      "sections": [
+        {
+          "id": "top-bar",
+          "maps": "announcement bar",
+          "use": "Liturgical-season or feast-day note only. Dismissible. No promos, no countdowns."
+        },
+        {
+          "id": "nav",
+          "maps": "nav",
+          "use": "Logo, Home, Bible, Saints, Fun, Chat, plus a parent-gate entry. Bottom tab bar on mobile."
+        },
+        {
+          "id": "hero",
+          "maps": "hero",
+          "use": "Plain heading on background, one primary action, mascot illustration beside (desktop) or below (mobile). Verse of the Day sits directly under."
+        },
+        {
+          "id": "modes",
+          "maps": "Play / Explore / Listen / Read panels",
+          "use": "Large illustrated section panels: Bible (blue), Saints and Catechism (yellow), Fun (quizzes red, games green, stories indigo), Chat (violet). Alternate image left/right on desktop; stacked on mobile."
+        },
+        {
+          "id": "journey",
+          "maps": "coddy journey",
+          "use": "'Continue your journey': a path of lesson nodes with current, completed and locked states."
+        },
+        {
+          "id": "new",
+          "maps": "new releases carousel",
+          "use": "Saint of the Day, new story, new quiz. Horizontal scroll-snap, no auto-advance."
+        },
+        {
+          "id": "grown-ups",
+          "maps": "for parents / for teachers",
+          "use": "Parent and catechist entry. Visually neutral (slate) so kids read it as not-for-them."
+        },
+        {
+          "id": "cta",
+          "maps": "download / try free CTA",
+          "use": "Single closing primary action."
+        },
+        {
+          "id": "footer",
+          "maps": "illustrated footer",
+          "use": "Simple footer with a ground illustration strip. Parent-gated external links."
+        }
+      ],
+      "dropped": [
+        "testimonials wall",
+        "awards strip",
+        "store badges",
+        "cookie ad-consent banner",
+        "stats counters"
+      ]
+    }
+  },
+  "elementStyling": {
+    "hero": {
+      "title": "Plain typography (h1, heading family, ink) directly on the page background. No pill, chip, badge or card around it.",
+      "background": "surface.page with 2 to 3 soft blob shapes (tint colours, no gradient, behind content, z-index below text)",
+      "illustration": "mascot beside the title, never inside a container behind the text",
+      "primaryAction": "one large sticker button below the title"
+    },
+    "navigation": {
+      "mobile": {
+        "type": "bottom tab bar",
+        "height": "72px + safe-area-inset-bottom",
+        "items": 4,
+        "item": "icon 32px above label 14px/700, min target 64x56",
+        "background": "surface.card",
+        "topBorder": "2px border.default",
+        "active": "icon and label use section deep colour; icon sits on a tint-colour circle 48px"
+      },
+      "desktop": {
+        "type": "top bar",
+        "height": "80px",
+        "items": "logo, 4 section links as large text buttons, parent gate",
+        "active": "section deep colour with 4px underline in section base"
+      },
+      "homeButton": "always visible, never hidden in a menu"
+    },
+    "cards": {
+      "sectionCard": {
+        "container": "background tint of the section, radius xl, padding 24px, border 2px border.default, shadow cardRest",
+        "icon": "solid section deep colour on white circle 72px; no gradient",
+        "label": "heading family 24px/600 ink inside the card is card content, not a page title",
+        "aspect": "min-height 160px mobile, 220px desktop",
+        "tap": "entire card is the target"
+      },
+      "contentCard": {
+        "container": "surface.card, radius lg, padding 24px, border 2px border.default, shadow cardRest"
+      },
+      "verseCard": {
+        "container": "surface.card with 4px left border in bible base; text in scripture font at scripture size, line-height 1.8; read-aloud button top-right of the card"
+      },
+      "journeyNode": {
+        "size": "72px circle, 88px for current",
+        "states": {
+          "completed": "fill the lesson's section deep colour, white check icon",
+          "current": "fill brand orange, ink icon, sticker shadow in orangeDeep, mascot standing beside",
+          "locked": "fill slateTint, slate lock icon, no shadow"
+        },
+        "connector": "4px dashed line in border.default between nodes"
+      }
+    },
+    "buttons": {
+      "shape": "radius pill, heading family, weight 700",
+      "sizes": {
+        "md": {
+          "height": "56px",
+          "padX": "32px",
+          "fontSize": "1.125rem"
+        },
+        "lg": {
+          "height": "64px",
+          "padX": "40px",
+          "fontSize": "1.25rem"
+        },
+        "icon": {
+          "size": "56px",
+          "radius": "pill"
+        }
+      },
+      "variants": {
+        "primary": {
+          "bg": "{color.orange}",
+          "text": "{color.ink}",
+          "shadow": "stickerOrange",
+          "note": "The standout button. Exactly one per screen."
+        },
+        "bible": {
+          "bg": "{color.blueDeep}",
+          "text": "{color.white}",
+          "shadow": "stickerBlue"
+        },
+        "saints": {
+          "bg": "{color.yellow}",
+          "text": "{color.ink}",
+          "shadow": "stickerYellow"
+        },
+        "quizzes": {
+          "bg": "{color.redDeep}",
+          "text": "{color.white}",
+          "shadow": "stickerRed"
+        },
+        "games": {
+          "bg": "{color.green}",
+          "text": "{color.ink}",
+          "shadow": "stickerGreen"
+        },
+        "stories": {
+          "bg": "{color.indigoDeep}",
+          "text": "{color.white}",
+          "shadow": "stickerIndigo"
+        },
+        "chat": {
+          "bg": "{color.violetDeep}",
+          "text": "{color.white}",
+          "shadow": "stickerViolet"
+        },
+        "parent": {
+          "bg": "{color.slate}",
+          "text": "{color.white}",
+          "shadow": "stickerSlate"
+        },
+        "outline": {
+          "bg": "{color.white}",
+          "text": "{color.ink}",
+          "border": "2px {color.sandBorder}",
+          "shadow": "cardRest"
+        }
+      },
+      "rules": [
+        "Shadow is on the button container only, never on label or icon",
+        "Solid fills only: no gradients on button text or icon",
+        "Label text is always paired with an icon on kid screens"
+      ],
+      "shadowNote": "Sticker shadow uses the variant's deep colour at 100% opacity; the bottom edge then reads as a darker rim of the same hue."
+    },
+    "inputs": {
+      "text": {
+        "height": "56px",
+        "radius": "lg",
+        "border": "2px border.default",
+        "bg": "surface.card",
+        "fontSize": "1.125rem",
+        "focus": "border blueDeep plus focus ring"
+      },
+      "pinKey": {
+        "size": "64px circle",
+        "fontSize": "1.5rem",
+        "bg": "surface.card",
+        "border": "2px border.default"
+      },
+      "avatarPicker": {
+        "tile": "88px rounded square, 3px border; selected: border blueDeep plus check badge icon bottom-right (icon, not a text pill)"
+      },
+      "chat": {
+        "composer": "pill input 56px with send icon button; under-8 band shows preset phrase buttons instead of free text"
+      }
+    },
+    "icons": {
+      "set": "lucide-react (already in packages/ui)",
+      "size": {
+        "nav": "32px",
+        "card": "40px",
+        "button": "24px"
+      },
+      "stroke": "2.5px, round caps and joins",
+      "color": "solid section deep or ink; never gradient",
+      "extra": "custom filled illustrations for saints, mascot and journey nodes"
+    },
+    "badges": {
+      "note": "Reward badges are illustrated collectibles, not text chips.",
+      "size": "96px",
+      "earned": "full colour illustration with 4px white outline",
+      "unearned": "slateTint silhouette",
+      "rule": "Never wrap a title or heading in a badge"
+    },
+    "media": {
+      "illustration": "flat vector, thick soft outlines, simple faces; saints have a flat gold halo",
+      "images": "next/image, lazy-load, aspect-ratio reserved, webp, max 100KB each on kid screens",
+      "audio": "read-aloud button 56px with play and stop icon; current word highlighted with tint background"
+    },
+    "footer": {
+      "bg": "surface.sand",
+      "illustration": "ground and grass strip across the top edge, decorative, aria-hidden",
+      "links": "external links sit behind the parent gate"
+    },
+    "mascot": {
+      "role": "guide, hint giver, celebrates wins",
+      "form": "UNDECIDED (lamb, dove or bible-carrying character): pick one before illustration starts",
+      "moods": ["happy", "thinking", "celebrating", "encouraging"],
+      "rule": "Wrong answers get the encouraging mood, never a sad one"
+    },
+    "parentGate": {
+      "trigger": "any settings, external link, account or purchase-like area",
+      "pattern": "simple arithmetic or hold-to-confirm for 2 seconds",
+      "style": "slate neutral palette so it reads as not-for-kids"
+    }
+  },
+  "states": {
+    "button": {
+      "default": "bg per variant; shadow sticker 0 6px; translateY 0",
+      "hover": "(pointer fine only) translateY -2px; shadow offsetY 8px",
+      "active": "translateY 4px; shadow offsetY 2px",
+      "focus-visible": "outline 4px solid {color.blueDeep}, outline-offset 3px",
+      "disabled": "opacity 0.5; shadow offsetY 2px; pointer-events none; cursor not-allowed",
+      "loading": "label replaced by 24px spinner icon (rotation only, no scale); width locked; aria-busy true"
+    },
+    "sectionCard": {
+      "default": "shadow cardRest",
+      "hover": "(pointer fine only) translateY -4px; shadow cardHover",
+      "active": "translateY 2px; shadow offsetY 2px",
+      "focus-visible": "outline 4px solid {color.blueDeep}, outline-offset 3px",
+      "disabled": "locked card: slateTint bg, lock icon, no hover",
+      "loading": "static tint-colour skeleton block (no pulse, no shimmer)"
+    },
+    "quizOption": {
+      "default": "surface.card, 3px border.default, radius lg, min-height 72px, one colour-coded shape icon at left",
+      "hover": "border becomes the quiz colour (redDeep)",
+      "active": "translateY 3px",
+      "focus-visible": "outline 4px solid {color.blueDeep}, outline-offset 3px",
+      "selected": "border redDeep, redTint bg",
+      "correct": "bg successTint, border success, check icon; one-shot hop; mascot celebrating",
+      "incorrect": "bg gentleRetryTint, border gentleRetry, 'try again' icon; one-shot soft wobble; mascot encouraging; never red",
+      "disabled": "after answer: other options opacity 0.6, pointer-events none"
+    },
+    "bottomNavItem": {
+      "default": "icon ink, label inkSoft",
+      "hover": "tint circle appears behind icon",
+      "active": "tint circle scales to 0.95",
+      "focus-visible": "outline 4px solid {color.blueDeep}, outline-offset -4px",
+      "selected": "section deep icon and label on section tint circle; aria-current page",
+      "disabled": "not used"
+    },
+    "journeyNode": {
+      "default": "per state in elementStyling.cards.journeyNode",
+      "hover": "(pointer fine only) translateY -2px",
+      "active": "translateY 3px",
+      "focus-visible": "outline 4px solid {color.blueDeep}, outline-offset 3px",
+      "disabled": "locked state; tap opens a friendly 'finish the last one first' mascot tip",
+      "loading": "static spinner icon"
+    },
+    "input": {
+      "default": "2px border.default",
+      "hover": "border becomes inkSoft",
+      "active": "border blueDeep",
+      "focus-visible": "border blueDeep plus outline 4px solid {color.blueDeep} at offset 2px",
+      "disabled": "bg slateTint, opacity 0.6",
+      "loading": "not applicable",
+      "error": "border coralDeep plus icon and text message (never colour alone)"
+    },
+    "link": {
+      "default": "blueDeep, 2px underline",
+      "hover": "underline offset 4px",
+      "active": "opacity 0.85",
+      "focus-visible": "outline 4px solid {color.blueDeep}, outline-offset 3px",
+      "disabled": "not used"
+    },
+    "audioButton": {
+      "default": "play icon",
+      "active": "stop icon, current word highlighted",
+      "loading": "spinner icon",
+      "disabled": "muted slash icon with aria-label",
+      "hover": "translateY -2px",
+      "focus-visible": "outline 4px solid {color.blueDeep}, outline-offset 3px"
+    }
+  },
+  "effects": {
+    "shadows": "Solid offset 'sticker' shadows (blur 0) on buttons, journey nodes and section cards only. Shadow colour and opacity recorded separately in tokens.primitive.shadow. Never on text or icon glyphs.",
+    "gradients": "None in the MVP. Flat fills only.",
+    "blur": "None. No glassmorphism.",
+    "borders": "2px solid border.default on cards and inputs; 3px on quiz options; 4px left accent on verse card."
+  },
+  "motion": {
+    "allowed": [
+      {
+        "element": "button",
+        "property": "transform, box-shadow",
+        "duration": "120ms",
+        "easing": "standard",
+        "trigger": "press"
+      },
+      {
+        "element": "sectionCard, journeyNode",
+        "property": "transform, box-shadow",
+        "duration": "200ms",
+        "easing": "standard",
+        "trigger": "hover (pointer fine only)"
+      },
+      {
+        "element": "quizOption (correct)",
+        "property": "transform (one-shot hop, 1 iteration)",
+        "duration": "400ms",
+        "easing": "overshoot",
+        "trigger": "answer"
+      },
+      {
+        "element": "quizOption (incorrect)",
+        "property": "transform (one-shot 4px side wobble, 1 iteration)",
+        "duration": "300ms",
+        "easing": "standard",
+        "trigger": "answer"
+      },
+      {
+        "element": "mascot",
+        "property": "transform (one-shot hop, 1 iteration)",
+        "duration": "900ms",
+        "easing": "overshoot",
+        "trigger": "correct answer, lesson complete"
+      },
+      {
+        "element": "confetti layer",
+        "property": "transform, opacity (one-shot particles, auto-removed)",
+        "duration": "1200ms",
+        "easing": "exit",
+        "trigger": "quiz or lesson complete"
+      },
+      {
+        "element": "journeyNode (unlock)",
+        "property": "transform scale 0.8 to 1 (one-shot)",
+        "duration": "400ms",
+        "easing": "overshoot",
+        "trigger": "load of newly unlocked node"
+      },
+      {
+        "element": "page view",
+        "property": "opacity, translateY 8px",
+        "duration": "200ms",
+        "easing": "standard",
+        "trigger": "view-transition"
+      },
+      {
+        "element": "spinner",
+        "property": "rotate",
+        "duration": "800ms linear",
+        "easing": "linear",
+        "trigger": "loading state only"
+      }
+    ],
+    "reducedMotion": "Under prefers-reduced-motion: reduce, every entry above becomes an instant state change. Hop, wobble, confetti and scale are replaced by a static star or check icon and a colour change. Spinner becomes a static hourglass icon. View transitions are disabled.",
+    "scrollDriven": "None. Carousels use scroll-snap with manual swipe only; nothing auto-advances."
+  },
+  "threeD": "None. No 3D content in the MVP. Mascot and saints are 2D vector illustrations.",
+  "accessibility": {
+    "focusRing": {
+      "style": "outline 4px solid {color.blueDeep}",
+      "offset": "3px",
+      "note": "Replaces the earlier ring colour #ffb703, which is only about 1.7:1 on the cream page and fails the 3:1 non-text minimum."
+    },
+    "minTapTarget": "48px (project standard), 56px for primary buttons, 72px for quiz options",
+    "contrastFailures": [
+      "Base fills against the cream page are decorative only (yellow 1.4:1, green 2.1:1, orange 2.5:1). Never use a base colour as text or as the only edge of a control; pair with a 2px border or deep colour.",
+      "White text is not allowed on orange, yellow or green base fills; use ink."
+    ],
+    "other": [
+      "Never rely on colour alone: correct/incorrect states also use icon and shape",
+      "Every lesson and story has read-aloud",
+      "All illustrations have alt text or aria-hidden if decorative",
+      "Body text never below 18px",
+      "Support text scaling to 200% without layout break"
+    ]
+  },
+  "responsive": {
+    "mobile": {
+      "nav": "bottom tab bar",
+      "hero": "stacked: title, action, mascot",
+      "modes": "one section card per row",
+      "grid": "4 columns",
+      "quiz": "options stacked full width"
+    },
+    "tablet": {
+      "nav": "top bar or bottom bar",
+      "modes": "2 x 2 bento of section cards",
+      "grid": "8 columns",
+      "quiz": "options in 2 columns"
+    },
+    "desktop": {
+      "nav": "top bar",
+      "hero": "split: title and action left, mascot right",
+      "modes": "alternating illustrated panels",
+      "grid": "12 columns",
+      "quiz": "centered 720px column"
+    }
+  },
+  "doNot": [
+    "NO pulse animation anywhere: no animate-pulse, animate-ping, skeleton pulse or shimmer, breathing glows, heartbeat scales, or blinking status dots",
+    "NO pill, badge, chip, tag or card wrapping any page title, section heading or eyebrow label, especially in heroes. Titles are plain typography on the background",
+    "No gradients on card icons or on button text",
+    "No shadows on text or icon glyphs",
+    "No invented colours, fonts or effects outside this file",
+    "No decorative motion without a state or interaction purpose",
+    "No continuously scrolling marquee strips (Magic Reef and Papumba use them; they are decorative motion). Use a static strip",
+    "No auto-advancing carousels",
+    "No dark mode in the MVP",
+    "No ads, promo banners, countdown offers, or cookie banners that mention personalised ads (Papumba-style promo bar is allowed only for liturgical or feast-day notes)",
+    "No testimonial walls or award strips on kid screens",
+    "No external links on kid screens without the parent gate",
+    "No hamburger menus or hidden gestures for primary navigation",
+    "Do not copy Coddy or Magic Pantry styling by guesswork: only structure was verified; ask for screenshots before matching visuals",
+    "Do not hardcode hex values in components; use tokens from packages/ui/src/styles.css",
+    "Do not use more than one orange primary button per screen; orange means 'do this next'",
+    "Do not use orange for section identity (it belongs to the brand/CTA); sections use blue, yellow, red, green, indigo, violet",
+    "Do not use white text on orange, yellow or green fills; use ink",
+    "Do not use yellow as a text colour on light backgrounds; use yellowDeep",
+    "Do not rely on colour alone to tell sections apart: every section also has its own icon and mascot pose (blue/indigo and orange/red sit close in hue)",
+    "Do not show all seven hues in one small component; at most one section hue plus orange per screen, rainbow only in celebration and the logo"
+  ]
+}

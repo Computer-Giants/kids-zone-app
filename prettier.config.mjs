@@ -1,1 +1,1 @@
-export { default } from "@template/config/prettier";
+export { default } from "@kidzone/config/prettier";

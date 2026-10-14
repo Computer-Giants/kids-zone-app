@@ -1,4 +1,4 @@
-import { functions, inngest, serve } from "@template/jobs";
+import { functions, inngest, serve } from "@kidzone/jobs";
 import { Hono } from "hono";
 
 export const jobs = new Hono();

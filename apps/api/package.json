@@ -1,5 +1,5 @@
 {
-  "name": "@template/api",
+  "name": "@kidzone/api",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -17,16 +17,15 @@
   "dependencies": {
     "@hono/node-server": "^1.13.7",
     "@hono/zod-validator": "^0.4.2",
-    "@template/db": "workspace:*",
-    "@template/jobs": "workspace:*",
-    "@template/observability": "workspace:*",
-    "@template/payments": "workspace:*",
-    "@template/validators": "workspace:*",
+    "@kidzone/db": "workspace:*",
+    "@kidzone/jobs": "workspace:*",
+    "@kidzone/observability": "workspace:*",
+    "@kidzone/validators": "workspace:*",
     "hono": "^4.6.14",
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@template/config": "workspace:*",
+    "@kidzone/config": "workspace:*",
     "@types/node": "^22.10.2",
     "tsup": "^8.3.5",
     "tsx": "^4.19.2",

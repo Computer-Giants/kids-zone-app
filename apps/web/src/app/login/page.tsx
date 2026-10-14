@@ -1,7 +1,7 @@
 "use client";
 
-import { createClient } from "@template/auth/client";
-import { Button } from "@template/ui";
+import { createClient } from "@kidzone/auth/client";
+import { Button } from "@kidzone/ui";
 import { useState } from "react";
 
 export default function LoginPage() {

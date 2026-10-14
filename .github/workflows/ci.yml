@@ -44,5 +44,5 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @template/web exec playwright install --with-deps chromium
-      - run: pnpm --filter @template/web test:e2e
+      - run: pnpm --filter @kidzone/web exec playwright install --with-deps chromium
+      - run: pnpm --filter @kidzone/web test:e2e

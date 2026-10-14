@@ -1,4 +1,4 @@
-import { updateSession } from "@template/auth/middleware";
+import { updateSession } from "@kidzone/auth/middleware";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {

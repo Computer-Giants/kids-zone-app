@@ -1,5 +1,5 @@
 {
-  "name": "@template/email",
+  "name": "@kidzone/email",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -18,7 +18,7 @@
     "resend": "^4.0.1"
   },
   "devDependencies": {
-    "@template/config": "workspace:*",
+    "@kidzone/config": "workspace:*",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "react-email": "^3.0.4",

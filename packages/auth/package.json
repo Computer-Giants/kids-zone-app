@@ -1,5 +1,5 @@
 {
-  "name": "@template/auth",
+  "name": "@kidzone/auth",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -19,7 +19,7 @@
     "next": "^15.1.0"
   },
   "devDependencies": {
-    "@template/config": "workspace:*",
+    "@kidzone/config": "workspace:*",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "typescript": "^5.7.2"

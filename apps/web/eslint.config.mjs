@@ -1,1 +1,1 @@
-export { default } from "@template/config/eslint/next";
+export { default } from "@kidzone/config/eslint/next";

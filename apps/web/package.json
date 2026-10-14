@@ -1,5 +1,5 @@
 {
-  "name": "@template/web",
+  "name": "@kidzone/web",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,10 +12,10 @@
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.11.1",
-    "@template/api": "workspace:*",
-    "@template/auth": "workspace:*",
-    "@template/ui": "workspace:*",
-    "@template/validators": "workspace:*",
+    "@kidzone/api": "workspace:*",
+    "@kidzone/auth": "workspace:*",
+    "@kidzone/ui": "workspace:*",
+    "@kidzone/validators": "workspace:*",
     "hono": "^4.6.14",
     "next": "^15.1.0",
     "react": "^19.0.0",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
-    "@template/config": "workspace:*",
+    "@kidzone/config": "workspace:*",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",

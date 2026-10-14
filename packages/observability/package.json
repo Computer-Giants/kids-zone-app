@@ -1,5 +1,5 @@
 {
-  "name": "@template/observability",
+  "name": "@kidzone/observability",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -14,7 +14,7 @@
     "pino": "^9.6.0"
   },
   "devDependencies": {
-    "@template/config": "workspace:*",
+    "@kidzone/config": "workspace:*",
     "@types/node": "^22.10.2",
     "typescript": "^5.7.2"
   }

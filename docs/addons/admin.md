@@ -4,4 +4,4 @@
 cp -r apps/web apps/admin     # simplest start: same stack, same shared packages
 ```
 
-Then: rename the package to `@template/admin`, change the dev port (`next dev --port 3002`), protect everything with `hasRole(role, "admin")` from `@template/auth`, and deploy as its own Vercel project / compose service.
+Then: rename the package to `@kidzone/admin`, change the dev port (`next dev --port 3002`), protect everything with `hasRole(role, "admin")` from `@kidzone/auth`, and deploy as its own Vercel project / compose service.

@@ -1,4 +1,4 @@
-import type { AppType } from "@template/api/app";
+import type { AppType } from "@kidzone/api/app";
 import { hc } from "hono/client";
 import { env } from "@/env";
 

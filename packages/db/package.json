@@ -1,5 +1,5 @@
 {
-  "name": "@template/db",
+  "name": "@kidzone/db",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -19,7 +19,7 @@
     "postgres": "^3.4.5"
   },
   "devDependencies": {
-    "@template/config": "workspace:*",
+    "@kidzone/config": "workspace:*",
     "@types/node": "^22.10.2",
     "drizzle-kit": "^0.30.1",
     "typescript": "^5.7.2"

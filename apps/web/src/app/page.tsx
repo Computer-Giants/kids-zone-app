@@ -1,4 +1,4 @@
-import { Button } from "@template/ui";
+import { Button } from "@kidzone/ui";
 
 export default function Home() {
   return (

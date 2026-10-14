@@ -1,5 +1,5 @@
 {
-  "extends": "@template/config/tsconfig/library.json",
+  "extends": "@kidzone/config/tsconfig/library.json",
   "include": ["src", "*.ts", "*.mts"],
   "exclude": ["node_modules", "dist"]
 }

@@ -6,14 +6,13 @@ const config: NextConfig = {
   output: "standalone",
   outputFileTracingRoot: path.join(process.cwd(), "../.."),
   transpilePackages: [
-    "@template/ui",
-    "@template/auth", // @module:auth
-    "@template/validators",
-    "@template/api",
-    "@template/db",
-    "@template/payments", // @module:payments
-    "@template/jobs", // @module:jobs
-    "@template/observability", // @module:observability
+    "@kidzone/ui",
+    "@kidzone/auth",
+    "@kidzone/validators",
+    "@kidzone/api",
+    "@kidzone/db",
+    "@kidzone/jobs",
+    "@kidzone/observability",
   ],
 };
 
