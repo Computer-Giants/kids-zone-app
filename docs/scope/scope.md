@@ -240,20 +240,32 @@ Word search, tile matching, and scramble puzzles with Catholic church themes and
 
 ## Slice 4: Rewards and Daily Habits
 
-### 12. Rewards ledger and streak tracking · needs a decision
+### 12. Rewards ledger and streak tracking · planned
 
 Append only ledger tracking spendable coins and permanent stars, with daily streak calculations respecting the household timezone.
 **Done when:** activity completions log idempotent events, ledger entries calculate balances correctly, and daily caps prevent over earning. (basis: .agents/AGENTS.md)
 
-- [ ] Design it (spec): `/architect rewards ledger and streak tracking`
+- [x] Design it (spec): [0012](../specs/0012-rewards-ledger-and-streak-tracking.md)
+- [ ] Build it: /develop rewards ledger and streak tracking
+  - [ ] Pure streak calculation and daily cap helpers in packages/utils (AC-3, AC-6)
+  - [ ] Default coin rules in packages/db and ledger transaction logic in apps/api (AC-1, AC-2, AC-4, AC-5)
+  - [ ] StreakBadge, RewardSummaryBar, and child dashboard reward views in apps/web (AC-7, AC-8)
+- [ ] Verify it: /check verify rewards ledger and streak tracking
+- [ ] Test it: /test rewards ledger and streak tracking
       Code in `packages/db/` and `apps/api/`
 
-### 13. Leaderboard and daily review · needs a decision
+### 13. Leaderboard and daily review · planned
 
 Weekly star rankings partitioned by real age band showing nicknames only, paired with a spaced repetition daily question review loop.
 **Done when:** weekly stars rank children within their age band, hidden children are omitted, and review questions return on increasing intervals. (basis: docs/data-model.md)
 
-- [ ] Design it (spec): `/architect leaderboard and daily review`
+- [x] Design it (spec): [0013](../specs/0013-leaderboard-and-daily-review.md)
+- [ ] Build it: /develop leaderboard and daily review
+  - [ ] Pure spaced repetition interval logic in packages/utils (AC-6, AC-7)
+  - [ ] Weekly stars aggregation job in packages/jobs and API routes in apps/api (AC-1, AC-2, AC-3, AC-4)
+  - [ ] Daily review card, runner, and leaderboard views in apps/web (AC-5, AC-8)
+- [ ] Verify it: /check verify leaderboard and daily review
+- [ ] Test it: /test leaderboard and daily review
       Code in `packages/jobs/` and `apps/web/`
 
 ---
