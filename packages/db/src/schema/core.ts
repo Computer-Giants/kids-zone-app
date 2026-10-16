@@ -1,11 +1,14 @@
 import {
+  boolean,
   index,
   integer,
   jsonb,
   pgTable,
   primaryKey,
+  smallint,
   text,
   timestamp,
+  uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
 import { profiles } from "./accounts";
@@ -92,4 +95,23 @@ export const auditLog = pgTable(
     index("audit_log_entity_idx").on(t.entityType, t.entityId),
     index("audit_log_actor_idx").on(t.actorId, t.createdAt),
   ],
+);
+
+/**
+ * Blocklist for nicknames now and chat later. Admin-editable. Phone numbers, emails and
+ * addresses are detected in code, not listed here.
+ */
+export const filterTerms = pgTable(
+  "filter_terms",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    term: text("term").notNull(),
+    locale: text("locale").notNull().default("en"),
+    /** 1 = flag for a moderator, 2 = block outright. */
+    severity: smallint("severity").notNull().default(2),
+    category: text("category"),
+    isActive: boolean("is_active").notNull().default(true),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [uniqueIndex("filter_terms_term_locale_idx").on(t.term, t.locale)],
 );

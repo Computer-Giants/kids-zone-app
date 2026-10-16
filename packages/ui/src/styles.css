@@ -1,37 +1,237 @@
 @import "tailwindcss";
 
-/* Design tokens: override per project. */
-:root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --muted: #f4f4f5;
-  --border: #e4e4e7;
-  --primary: #0a0a0a;
-  --primary-foreground: #fafafa;
-  --ring: #71717a;
+@theme {
+  --color-cream: #fffaf0;
+  --color-white: #ffffff;
+  --color-sand: #fff1d6;
+  --color-sand-border: #f0e2c0;
+
+  --color-ink: #2b2d42;
+  --color-ink-soft: #5c5f7a;
+  --color-slate: #5f6475;
+  --color-slate-tint: #eceef3;
+
+  --color-orange: #ff7a1a;
+  --color-orange-deep: #a63f08;
+  --color-orange-tint: #ffe8d6;
+
+  --color-red: #ec4466;
+  --color-red-deep: #b01f45;
+  --color-red-tint: #ffe1e8;
+
+  --color-yellow: #ffd23f;
+  --color-yellow-deep: #7a5a00;
+  --color-yellow-tint: #fff6cc;
+
+  --color-green: #35c76a;
+  --color-green-deep: #16793c;
+  --color-green-tint: #dcf7e5;
+
+  --color-blue: #3d8bff;
+  --color-blue-deep: #2a52d8;
+  --color-blue-tint: #e0ecff;
+
+  --color-indigo: #5b5bd6;
+  --color-indigo-deep: #3b3ba8;
+  --color-indigo-tint: #e6e6fb;
+
+  --color-violet: #a259ff;
+  --color-violet-deep: #7127c9;
+  --color-violet-tint: #f0e4ff;
+
+  --font-heading: var(--font-fredoka, "Fredoka", ui-rounded, system-ui, sans-serif);
+  --font-body: var(--font-nunito, "Nunito", ui-rounded, system-ui, sans-serif);
+  --font-scripture: var(--font-merriweather, "Merriweather", Georgia, serif);
+
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #fafafa;
-    --muted: #18181b;
-    --border: #27272a;
-    --primary: #fafafa;
-    --primary-foreground: #0a0a0a;
+
+/* Base canvas setup */
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* Sticker shadow system matching docs/design.json */
+.shadow-sticker-orange {
+  box-shadow: 0 6px 0 var(--color-orange-deep);
+}
+
+.shadow-sticker-blue {
+  box-shadow: 0 6px 0 var(--color-blue-deep);
+}
+
+.shadow-sticker-yellow {
+  box-shadow: 0 6px 0 var(--color-yellow-deep);
+}
+
+.shadow-sticker-red {
+  box-shadow: 0 6px 0 var(--color-red-deep);
+}
+
+.shadow-sticker-green {
+  box-shadow: 0 6px 0 var(--color-green-deep);
+}
+
+.shadow-sticker-indigo {
+  box-shadow: 0 6px 0 var(--color-indigo-deep);
+}
+
+.shadow-sticker-violet {
+  box-shadow: 0 6px 0 var(--color-violet-deep);
+}
+
+.shadow-sticker-slate {
+  box-shadow: 0 6px 0 rgba(43, 45, 66, 0.35);
+}
+
+.shadow-card-rest {
+  box-shadow: 0 4px 0 var(--color-sand-border);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 10px 0 var(--color-sand-border);
+}
+
+/* High contrast accessible focus outline */
+.focus-accessible:focus-visible {
+  outline: 4px solid var(--color-blue-deep);
+  outline-offset: 3px;
+}
+
+/* Mascot Lamb SVG Keyframe Animations */
+@keyframes lamb-blink {
+  0%,
+  92%,
+  96%,
+  100% {
+    transform: scaleY(1);
+  }
+  94% {
+    transform: scaleY(0.1);
   }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-ring: var(--ring);
+@keyframes lamb-ear-left {
+  0%,
+  100% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(-28deg);
+  }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+@keyframes lamb-ear-right {
+  0%,
+  100% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(28deg);
+  }
+}
+
+@keyframes lamb-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes lamb-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(-12px) rotate(-2deg);
+  }
+  65% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+}
+
+@keyframes lamb-sparkle {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8) rotate(360deg);
+    opacity: 0.5;
+  }
+}
+
+.animate-lamb-blink {
+  animation: lamb-blink 4.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.animate-lamb-ear-l {
+  animation: lamb-ear-left 3.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 80% 50%;
+}
+
+.animate-lamb-ear-r {
+  animation: lamb-ear-right 3.6s ease-in-out infinite 0.4s;
+  transform-box: fill-box;
+  transform-origin: 20% 50%;
+}
+
+.animate-lamb-breathe {
+  animation: lamb-breathe 4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.animate-lamb-hop {
+  animation: lamb-hop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-lamb-sparkle {
+  animation: lamb-sparkle 2.6s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Safe area bottom inset support for mobile tab bar */
+.pb-safe {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-lamb-blink,
+  .animate-lamb-ear-l,
+  .animate-lamb-ear-r,
+  .animate-lamb-breathe,
+  .animate-lamb-hop,
+  .animate-lamb-sparkle {
+    animation: none !important;
+  }
 }

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-labelledby="title desc">
+  <title id="title">Kid Zone logo</title>
+  <desc id="desc">A friendly orange lamb inside a rounded rainbow badge beside the Kid Zone wordmark.</desc>
+  <defs>
+    <clipPath id="badgeClip"><rect x="18" y="18" width="184" height="184" rx="52"/></clipPath>
+  </defs>
+  <g id="mark">
+    <rect x="18" y="18" width="184" height="184" rx="52" fill="#FFF1D6" stroke="#F0E2C0" stroke-width="6"/>
+    <g clip-path="url(#badgeClip)">
+      <path d="M-12 179 C 27 134, 72 127, 107 149 C 143 171, 176 166, 220 128 L220 220 L-12 220Z" fill="#A259FF"/>
+      <path d="M-12 190 C 31 148, 72 145, 110 164 C 147 183, 181 178, 220 142 L220 220 L-12 220Z" fill="#5B5BD6"/>
+      <path d="M-12 201 C 31 169, 76 165, 111 181 C 150 199, 181 193, 220 161 L220 220 L-12 220Z" fill="#3D8BFF"/>
+      <path d="M-12 211 C 31 190, 78 184, 113 198 C 150 213, 183 207, 220 183 L220 220 L-12 220Z" fill="#35C76A"/>
+      <path d="M-12 220 C 29 210, 75 202, 112 213 C 150 224, 184 218, 220 201 L220 220Z" fill="#FFD23F"/>
+    </g>
+    <circle cx="109" cy="104" r="51" fill="#FF7A1A" stroke="#A63F08" stroke-width="6"/>
+    <circle cx="77" cy="96" r="28" fill="#FFF1D6" stroke="#2B2D42" stroke-width="5"/>
+    <circle cx="141" cy="96" r="28" fill="#FFF1D6" stroke="#2B2D42" stroke-width="5"/>
+    <path d="M85 74 C84 50 99 39 110 39 C122 39 136 50 134 74" fill="#FFF1D6" stroke="#2B2D42" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="92" cy="101" r="5" fill="#2B2D42"/><circle cx="126" cy="101" r="5" fill="#2B2D42"/>
+    <path d="M105 117 Q110 123 115 117" fill="none" stroke="#2B2D42" stroke-width="4" stroke-linecap="round"/>
+    <path d="M159 46 l7 -13 7 13 13 7 -13 7 -7 13 -7 -13 -13 -7z" fill="#FFD23F" stroke="#7A5A00" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+  <g id="wordmark" fill="#2B2D42" font-family="Fredoka, ui-rounded, Arial Rounded MT Bold, sans-serif" font-weight="700">
+    <text x="238" y="112" font-size="82" letter-spacing="-3">Kid</text>
+    <text x="238" y="181" font-size="82" letter-spacing="-3">Zone</text>
+  </g>
+  <path d="M510 52h154" stroke="#FF7A1A" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="680" cy="52" r="9" fill="#3D8BFF"/>
+</svg>

@@ -47,7 +47,7 @@ export const glossaryTerms = pgTable(
     }),
     ...contentMeta(),
   },
-  (t) => [ageRangeCheck("glossary_terms"), publishedCheck("glossary_terms")],
+  (_t) => [ageRangeCheck("glossary_terms"), publishedCheck("glossary_terms")],
 );
 
 export const prayers = pgTable(
@@ -63,7 +63,7 @@ export const prayers = pgTable(
     }),
     ...contentMeta(),
   },
-  (t) => [ageRangeCheck("prayers"), publishedCheck("prayers")],
+  (_t) => [ageRangeCheck("prayers"), publishedCheck("prayers")],
 );
 
 export const rosaryMysteries = pgTable(
@@ -105,7 +105,7 @@ export const massParts = pgTable(
     }),
     ...contentMeta(),
   },
-  (t) => [ageRangeCheck("mass_parts"), publishedCheck("mass_parts")],
+  (_t) => [ageRangeCheck("mass_parts"), publishedCheck("mass_parts")],
 );
 
 /**

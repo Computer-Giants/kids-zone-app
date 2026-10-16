@@ -18,7 +18,15 @@ import { children } from "./accounts";
 import { contentMeta, ageRangeCheck, publishedCheck } from "./columns";
 import { mediaAssets } from "./core";
 import { quizOptions, quizQuestions, quizzes } from "./fun";
-import { activityType, appSection, contentEntity, ledgerCurrency, progressStatus } from "./enums";
+import {
+  activityType,
+  ageBand,
+  appSection,
+  attemptKind,
+  contentEntity,
+  ledgerCurrency,
+  progressStatus,
+} from "./enums";
 import { timestamps } from "./timestamps";
 
 /**
@@ -178,7 +186,7 @@ export const journeys = pgTable(
     }),
     ...contentMeta(),
   },
-  (t) => [ageRangeCheck("journeys"), publishedCheck("journeys")],
+  (_t) => [ageRangeCheck("journeys"), publishedCheck("journeys")],
 );
 
 /** Node state (locked, current, completed) is derived from child_progress. */
@@ -206,16 +214,19 @@ export const quizAttempts = pgTable(
     childId: uuid("child_id")
       .notNull()
       .references(() => children.id, { onDelete: "cascade" }),
-    quizId: uuid("quiz_id")
-      .notNull()
-      .references(() => quizzes.id, { onDelete: "cascade" }),
+    /** Null for random and review rounds, which draw from the question pool. */
+    quizId: uuid("quiz_id").references(() => quizzes.id, { onDelete: "cascade" }),
+    kind: attemptKind("kind").notNull().default("quiz"),
     score: smallint("score"),
     correctCount: smallint("correct_count"),
     totalCount: smallint("total_count"),
     startedAt: timestamp("started_at", { withTimezone: true }).notNull().defaultNow(),
     finishedAt: timestamp("finished_at", { withTimezone: true }),
   },
-  (t) => [index("quiz_attempts_child_quiz_idx").on(t.childId, t.quizId)],
+  (t) => [
+    index("quiz_attempts_child_quiz_idx").on(t.childId, t.quizId),
+    check("quiz_attempts_quiz_chk", sql`kind <> 'quiz' OR quiz_id IS NOT NULL`),
+  ],
 );
 
 export const quizAnswers = pgTable(
@@ -235,5 +246,46 @@ export const quizAnswers = pgTable(
   (t) => [
     primaryKey({ columns: [t.attemptId, t.questionId] }),
     index("quiz_answers_question_idx").on(t.questionId),
+  ],
+);
+
+/** Daily review: when each question next comes back for each child. Gaps grow as they get it right. */
+export const reviewItems = pgTable(
+  "review_items",
+  {
+    childId: uuid("child_id")
+      .notNull()
+      .references(() => children.id, { onDelete: "cascade" }),
+    questionId: uuid("question_id")
+      .notNull()
+      .references(() => quizQuestions.id, { onDelete: "cascade" }),
+    dueAt: timestamp("due_at", { withTimezone: true }).notNull(),
+    intervalDays: smallint("interval_days").notNull().default(1),
+    correctStreak: smallint("correct_streak").notNull().default(0),
+    lastAnsweredAt: timestamp("last_answered_at", { withTimezone: true }),
+  },
+  (t) => [
+    primaryKey({ columns: [t.childId, t.questionId] }),
+    index("review_items_due_idx").on(t.childId, t.dueAt),
+  ],
+);
+
+/**
+ * Weekly stars by real age band, filled by a background job so the app never ranks on the fly.
+ * The job skips children whose parent hid them (children.show_on_leaderboard = false).
+ */
+export const leaderboardWeekly = pgTable(
+  "leaderboard_weekly",
+  {
+    weekStart: date("week_start", { mode: "string" }).notNull(),
+    childId: uuid("child_id")
+      .notNull()
+      .references(() => children.id, { onDelete: "cascade" }),
+    ageBand: ageBand("age_band").notNull(),
+    stars: integer("stars").notNull().default(0),
+  },
+  (t) => [
+    primaryKey({ columns: [t.weekStart, t.childId] }),
+    index("leaderboard_weekly_rank_idx").on(t.weekStart, t.ageBand, t.stars),
   ],
 );

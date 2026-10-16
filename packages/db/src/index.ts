@@ -28,3 +28,9 @@ const globalForDb = globalThis as unknown as { __db?: Database };
 export function getDb(): Database {
   return (globalForDb.__db ??= createDb());
 }
+
+export * from "./data/catholic-books";
+export * from "./data/initial-scripture";
+export * from "./data/saints";
+export * from "./data/quizzes";
+export { seedBibleData } from "./seed";

@@ -116,7 +116,11 @@ export const activityType = pgEnum("activity_type", [
   "lesson_completed",
   "quiz_completed",
   "puzzle_completed",
+  "review_completed",
+  "random_quiz_completed",
 ]);
+/** A saved quiz, a random quiz drawn from the question pool, or a daily review round. */
+export const attemptKind = pgEnum("attempt_kind", ["quiz", "random", "review"]);
 export const progressStatus = pgEnum("progress_status", ["started", "completed"]);
 /** Stars measure progress and are never spent. Coins are spendable. */
 export const ledgerCurrency = pgEnum("ledger_currency", ["star", "coin"]);

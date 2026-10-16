@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "Kid Zone design system",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "theme": "light",
     "styleDescriptors": [
       "storybook",
@@ -879,9 +879,14 @@
     },
     "mascot": {
       "role": "guide, hint giver, celebrates wins",
-      "form": "UNDECIDED (lamb, dove or bible-carrying character): pick one before illustration starts",
+      "form": "Lamb (decided)",
       "moods": ["happy", "thinking", "celebrating", "encouraging"],
-      "rule": "Wrong answers get the encouraging mood, never a sad one"
+      "rule": "Wrong answers get the encouraging mood, never a sad one. The dove is a sacred symbol: the reviewer approves how it is drawn.",
+      "characters": {
+        "lamb": "The guide. Hints, celebrations, encouragement.",
+        "dove": "Flies across the screen once when a main page loads. One short play. Placement may change; the team decides.",
+        "donkey": "Hosts the stories. Never described as 'the only animal that talks' (the serpent in Genesis speaks too)."
+      }
     },
     "parentGate": {
       "trigger": "any settings, external link, account or purchase-like area",
@@ -1027,6 +1032,14 @@
         "duration": "800ms linear",
         "easing": "linear",
         "trigger": "loading state only"
+      },
+      {
+        "element": "dove (main page load)",
+        "property": "transform, opacity (one-shot)",
+        "duration": "600ms",
+        "easing": "standard",
+        "trigger": "load",
+        "note": "Explicit exception to 'motion answers a tap or marks a win'. Never blocks input. Skipped on reduced motion and on slow devices."
       }
     ],
     "reducedMotion": "Under prefers-reduced-motion: reduce, every entry above becomes an instant state change. Hop, wobble, confetti and scale are replaced by a static star or check icon and a colour change. Spinner becomes a static hourglass icon. View transitions are disabled.",
@@ -1080,7 +1093,7 @@
     "No gradients on card icons or on button text",
     "No shadows on text or icon glyphs",
     "No invented colours, fonts or effects outside this file",
-    "No decorative motion without a state or interaction purpose",
+    "No decorative motion without a state or interaction purpose (the one exception is the dove on main-page load; see motion)",
     "No continuously scrolling marquee strips (Magic Reef and Papumba use them; they are decorative motion). Use a static strip",
     "No auto-advancing carousels",
     "No dark mode in the MVP",
@@ -1095,6 +1108,7 @@
     "Do not use white text on orange, yellow or green fills; use ink",
     "Do not use yellow as a text colour on light backgrounds; use yellowDeep",
     "Do not rely on colour alone to tell sections apart: every section also has its own icon and mascot pose (blue/indigo and orange/red sit close in hue)",
-    "Do not show all seven hues in one small component; at most one section hue plus orange per screen, rainbow only in celebration and the logo"
+    "Do not show all seven hues in one small component; at most one section hue plus orange per screen, rainbow only in celebration and the logo",
+    "Do not show real photos of children in any UI. The only place one exists is the parent's Throwback view."
   ]
 }

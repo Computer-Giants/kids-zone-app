@@ -14,29 +14,38 @@ Source of truth for the database design. The Drizzle schema in `packages/db/src/
 
 ## Decisions log
 
-| Area            | Decision                                                                                                                                                     |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Audience        | Open to any Catholic family. Parish is optional and only groups people.                                                                                      |
-| Parishes        | Admins create approved parishes. Parents can suggest one, which stays `pending` until an admin approves it.                                                  |
-| Child access    | Guest mode, with the option to save progress by joining under a parent.                                                                                      |
-| Ages            | Bands 3-7, 8-10, 11-15, derived from `birth_date`. Birthday stored for birthday wishes. At 16 the profile becomes `graduated` (history kept).                |
-| Content by band | Default band from age, overridable in settings (parent gate). Children can browse any band.                                                                  |
-| Staff roles     | parent, contributor, reviewer, moderator, admin. Parish admin is scoped through `parish_admins`.                                                             |
-| Publishing      | Admin publishes after a priest or catechist approves. Contributors submit.                                                                                   |
-| Parish posts    | App admin approves every post. `submitted_by`, `approved_by` and `approved_at` give accountability.                                                          |
-| Bible           | Full text, curated key verses, kid retellings and verse of the day. Reading mode is switchable, with an age-based default.                                   |
-| Translations    | Two English translations (standard and easy). Other languages later, by adding rows.                                                                         |
-| Read-aloud      | Recorded voice for stories and lessons. Device text-to-speech for full Bible text.                                                                           |
-| Saints          | Story, virtue, feast day, patronage, prayer, fun facts, century and country. Browse by calendar, patronage, virtue, map and search. Simple and very graphic. |
-| Catechism       | Core beliefs, prayers, Mass and Church year, sacrament prep. Focus on the sacraments and the holiness of the church.                                         |
-| Puzzles (MVP)   | Word search, matching, scramble, fill-in-the-blank. Church-centric. Colouring is phase 2.                                                                    |
-| Quizzes         | Four question types. Complexity follows age: the younger, the simpler.                                                                                       |
-| Stories         | Open set of kinds. Original virtue stories, parables, Church history and miracles, bedtime with a prayer.                                                    |
-| Rewards         | Streaks, badges, stars, journey map and coins. Coins come from everyday activity (small) and challenges (bigger).                                            |
-| Prize delivery  | Digital, shipping, or pickup at a parish.                                                                                                                    |
-| Chat            | Open rooms by age band or topic, plus parish rooms. **Ages 11-15 only**, free text with heavy filtering, monitoring and flagging.                            |
+| Area                               | Decision                                                                                                                                                                  |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Audience                           | Open to any Catholic family. Parish is optional and only groups people.                                                                                                   |
+| Parishes                           | Admins create approved parishes. Parents can suggest one, which stays `pending` until an admin approves it.                                                               |
+| Child access                       | Guest mode, with the option to save progress by joining under a parent.                                                                                                   |
+| Ages                               | Bands 3-7, 8-10, 11-15, derived from `birth_date`. Birthday stored for birthday wishes. At 16 the profile becomes `graduated` (history kept).                             |
+| Content by band                    | Default band from age, overridable in settings (parent gate). Children can browse any band.                                                                               |
+| Staff roles                        | parent, contributor, reviewer, moderator, admin. Parish admin is scoped through `parish_admins`.                                                                          |
+| Publishing                         | Admin publishes after a priest or catechist approves. Contributors submit.                                                                                                |
+| Parish posts                       | App admin approves every post. `submitted_by`, `approved_by` and `approved_at` give accountability.                                                                       |
+| Bible                              | Full text, curated key verses, kid retellings and verse of the day. Reading mode is switchable, with an age-based default.                                                |
+| Translations                       | Two English translations (standard and easy). Other languages later, by adding rows.                                                                                      |
+| Read-aloud                         | Recorded voice for stories and lessons. Device text-to-speech for full Bible text.                                                                                        |
+| Saints                             | Story, virtue, feast day, patronage, prayer, fun facts, century and country. Browse by calendar, patronage, virtue, map and search. Simple and very graphic.              |
+| Catechism                          | Core beliefs, prayers, Mass and Church year, sacrament prep. Focus on the sacraments and the holiness of the church.                                                      |
+| Puzzles (MVP)                      | Word search, matching, scramble, fill-in-the-blank. Church-centric. Colouring is phase 2.                                                                                 |
+| Quizzes                            | Four question types. Complexity follows age: the younger, the simpler.                                                                                                    |
+| Stories                            | Open set of kinds. Original virtue stories, parables, Church history and miracles, bedtime with a prayer.                                                                 |
+| Rewards                            | Streaks, badges, stars, journey map and coins. Coins come from everyday activity (small) and challenges (bigger).                                                         |
+| Prize delivery                     | Digital, shipping, or pickup at a parish.                                                                                                                                 |
+| Chat                               | Open rooms by age band or topic, plus parish rooms. **Ages 11-15 only**, free text with heavy filtering, monitoring and flagging.                                         |
+| Platform                           | Mobile-first, fully responsive PWA. Offline is for reading only; progress and coins wait for a connection.                                                                |
+| Languages                          | Built for many (`locale` on every content row). English only in the MVP; Nigerian Pidgin first after launch.                                                              |
+| Remembering                        | Daily review of past questions and random quizzes. Both earn coins, capped per day.                                                                                       |
+| Leaderboard                        | Always on, by real age band, nicknames only, ranked by weekly stars. A parent can hide their child.                                                                       |
+| Nicknames                          | Typed by the parent and run through the blocklist (`filter_terms`).                                                                                                       |
+| AI (later)                         | Answers older children's questions, all ages, simplified by band. Off until a priest or catechist-graded test passes for each band. A named exception to the review rule. |
+| Throwback Kings and Queens (later) | A parent uploads a photo each year, stored privately and shown back to the family. No public sharing. The one place a child's photo is held.                              |
+| Content sources                    | Gathered from existing Catholic material by the core team; every row records its source (`source_note`). A priest reviews against the original.                           |
+| Compliance                         | Deferred until the MVP is finished. Closed group only until then; photos, chat and AI stay off until it's done.                                                           |
 
-## MVP tables (51)
+## MVP tables (54)
 
 ### Church and accounts
 
@@ -45,7 +54,7 @@ Source of truth for the database design. The Drizzle schema in `packages/db/src/
 | `profiles`          | Parents and staff. `id` mirrors `auth.users.id`. Role: parent, contributor, reviewer, moderator, admin. |
 | `parishes`          | `status` pending, approved or rejected. Approved rows need `approved_by` and `approved_at`.             |
 | `households`        | One per parent. Optional `parish_id`. `timezone` sets streak day boundaries.                            |
-| `children`          | Nickname, preset avatar, `birth_date`, PIN hash, status active or graduated.                            |
+| `children`          | Nickname, preset avatar, `birth_date`, PIN hash, status active or graduated, `show_on_leaderboard`.     |
 | `child_preferences` | `age_band_override`, `reading_mode`, preferred translation. Null means use the age-based default.       |
 | `parish_admins`     | Links a profile to one parish.                                                                          |
 | `parish_posts`      | Announcements and events. Cannot be `published` without an approver.                                    |
@@ -54,11 +63,12 @@ Source of truth for the database design. The Drizzle schema in `packages/db/src/
 
 ### Shared content
 
-| Table            | Purpose                                                                                                             |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `media_assets`   | Images, SVGs and audio, with alt text and duration.                                                                 |
-| `topics`         | Virtues, sacraments, commandments, seasons, themes.                                                                 |
-| `content_topics` | Tags any content with any topic. `entity_id` is not a foreign key, so the app removes rows when content is deleted. |
+| Table            | Purpose                                                                                                               |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `media_assets`   | Images, SVGs and audio, with alt text and duration.                                                                   |
+| `filter_terms`   | Admin-editable blocklist for nicknames now and chat later. Needed in phase 2 because the leaderboard shows nicknames. |
+| `topics`         | Virtues, sacraments, commandments, seasons, themes.                                                                   |
+| `content_topics` | Tags any content with any topic. `entity_id` is not a foreign key, so the app removes rows when content is deleted.   |
 
 ### Bible
 
@@ -78,25 +88,29 @@ Source of truth for the database design. The Drizzle schema in `packages/db/src/
 
 ### Progress and coins
 
-| Table                           | Purpose                                                                                         |
-| ------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `activity_events`               | Append-only log. Unique `(child_id, idempotency_key)` stops double counting.                    |
-| `child_progress`                | State per child and content item. Drives "Continue" and the journey map.                        |
-| `streaks`                       | Current and longest streak.                                                                     |
-| `coin_rules`                    | Earning rules (amount, minimum score, first-time-only, daily cap). Tunable without a deploy.    |
-| `ledger_entries`                | Stars and coins. A partial unique index lets a first-time rule pay a child once per item.       |
-| `badges`, `child_badges`        | Milestones. The rule is JSON; a background job awards from events.                              |
-| `journeys`, `journey_nodes`     | The path of lessons, stories, quizzes and puzzles. Node state is derived from `child_progress`. |
-| `quiz_attempts`, `quiz_answers` | History, so we can see which wrong answers are chosen.                                          |
+| Table                           | Purpose                                                                                                                      |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `activity_events`               | Append-only log. Unique `(child_id, idempotency_key)` stops double counting.                                                 |
+| `child_progress`                | State per child and content item. Drives "Continue" and the journey map.                                                     |
+| `streaks`                       | Current and longest streak.                                                                                                  |
+| `coin_rules`                    | Earning rules (amount, minimum score, first-time-only, daily cap). Tunable without a deploy.                                 |
+| `ledger_entries`                | Stars and coins. A partial unique index lets a first-time rule pay a child once per item.                                    |
+| `badges`, `child_badges`        | Milestones. The rule is JSON; a background job awards from events.                                                           |
+| `journeys`, `journey_nodes`     | The path of lessons, stories, quizzes and puzzles. Node state is derived from `child_progress`.                              |
+| `quiz_attempts`, `quiz_answers` | History, so we can see which wrong answers are chosen. `kind` is quiz, random or review; `quiz_id` is null for the last two. |
+| `review_items`                  | Daily review schedule: when each question next comes back for each child, with growing gaps.                                 |
+| `leaderboard_weekly`            | Weekly stars by real age band, filled by a background job. Skips children a parent has hidden.                               |
 
 ## Later phases (not in the schema yet)
 
-| Phase                           | Tables                                                                                                                                                     |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Phase 2: Inside the Church tour | `church_tour_scenes`, `church_tour_items` (tap positions, linked to `glossary_terms`, with a "how we behave" note)                                         |
-| Phase 2: Colouring              | `child_artworks` (stores the chosen colour per region as a small JSON map, not an image; downloaded as PNG or PDF in the browser; saving needs an account) |
-| Challenges and prize shop       | `challenges`, `challenge_tasks`, `challenge_progress`, `challenge_prizes`, `prizes`, `prize_stock`, `redemptions`, `child_inventory`, `delivery_addresses` |
-| Chat (ages 11-15 only)          | `chat_rooms`, `room_members`, `messages`, `reactions`, `reports`, `moderation_actions`, `message_flags`, `filter_terms`, `safeguarding_alerts`             |
+| Phase                           | Tables                                                                                                                                                                                                                                    |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Phase 2: Inside the Church tour | `church_tour_scenes`, `church_tour_items` (tap positions, linked to `glossary_terms`, with a "how we behave" note)                                                                                                                        |
+| Throwback Kings and Queens      | `child_memories` (child, year, private photo path, caption). Private storage bucket readable only by that household, short-lived links, location data stripped on upload, deletable by the parent, never cached offline, no share button. |
+| After chat: the AI              | `ai_answers` (child, age band, question, answer, model, time) as a log. The graded test set also needs its own table.                                                                                                                     |
+| Phase 2: Colouring              | `child_artworks` (stores the chosen colour per region as a small JSON map, not an image; downloaded as PNG or PDF in the browser; saving needs an account)                                                                                |
+| Challenges and prize shop       | `challenges`, `challenge_tasks`, `challenge_progress`, `challenge_prizes`, `prizes`, `prize_stock`, `redemptions`, `child_inventory`, `delivery_addresses`                                                                                |
+| Chat (ages 11-15 only)          | `chat_rooms`, `room_members`, `messages`, `reactions`, `reports`, `moderation_actions`, `message_flags`, `safeguarding_alerts` (`filter_terms` is already in the MVP)                                                                     |
 
 **Challenges and prizes.** Types are weekly, competition and hunt, scoped to everyone or one parish. A redemption is `fulfilment_method` digital, ship or pickup. A parent approves every physical redemption. Stock is reserved in one transaction on approval. A parish admin can see and update pickups for their own parish only. Cancellation returns coins with a new ledger entry. `ledger_entries.challenge_id` is already present and gets its foreign key when `challenges` ships.
 
@@ -122,6 +136,9 @@ Search should also match `saints.search_aliases`, patronage labels and topic nam
 - Age band override, reading mode and translation moved from `children` into `child_preferences`.
 - Content status uses `draft`, `submitted`, `approved`, `published`, `archived` (replaces `in_review`).
 - `parishes` has a `status` so parents can suggest parishes.
+- Daily review and random quizzes added `review_items`, two activity types, and a nullable `quiz_attempts.quiz_id`.
+- Every content row gained `source_note`.
+- The leaderboard added `leaderboard_weekly` and `children.show_on_leaderboard`. `filter_terms` moved from the chat phase into the MVP.
 
 ## Applying the schema
 
@@ -135,7 +152,7 @@ Search should also match `saints.search_aliases`, patronage labels and topic nam
 
 ## Open items
 
-- **Throwback Kings and Queens:** to be explained; may need its own tables.
+- **Parent weekly email:** not chosen. Add it if wanted; it needs no new tables.
 - **Second guardian:** `households.owner_id` is unique, so one parent account per household. Add `household_guardians` if two parents should share a household.
 - **Row-level security:** every table holding child data needs RLS and a test proving one household cannot read another's (an `AGENTS.md` rule). Not written yet.
 - **Zod schemas** for `puzzles.config`, `quiz_questions.config` and `badges.rule` in `packages/validators`.

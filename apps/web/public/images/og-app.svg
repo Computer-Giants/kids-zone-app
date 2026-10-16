@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Kid Zone app social preview</title>
+  <desc id="desc">Kid Zone app, joyful learning for children with a lamb guide.</desc>
+  <rect width="1200" height="630" fill="#2A52D8"/>
+  <circle cx="1066" cy="-12" r="205" fill="#3D8BFF"/><circle cx="1125" cy="552" r="180" fill="#5B5BD6"/>
+  <path d="M0 545 C166 485 294 482 432 531 C575 581 699 578 842 536 C975 497 1097 497 1200 535 L1200 630 L0 630Z" fill="#FF7A1A"/>
+  <path d="M0 585 C183 525 315 527 449 573 C590 622 703 616 854 579 C991 545 1103 546 1200 576 L1200 630 L0 630Z" fill="#FFD23F"/>
+  <g transform="translate(103 96) scale(1.24)">
+    <rect x="18" y="18" width="184" height="184" rx="52" fill="#FFF1D6" stroke="#F0E2C0" stroke-width="6"/>
+    <path d="M-12 179 C27 134 72 127 107 149 C143 171 176 166 220 128v92H-12Z" fill="#A259FF"/><path d="M-12 190 C31 148 72 145 110 164 C147 183 181 178 220 142v78H-12Z" fill="#5B5BD6"/><path d="M-12 201 C31 169 76 165 111 181 C150 199 181 193 220 161v59H-12Z" fill="#3D8BFF"/><path d="M-12 211 C31 190 78 184 113 198 C150 213 183 207 220 183v37H-12Z" fill="#35C76A"/><path d="M-12 220 C29 210 75 202 112 213 C150 224 184 218 220 201v19H-12Z" fill="#FFD23F"/>
+    <circle cx="109" cy="104" r="51" fill="#FF7A1A" stroke="#A63F08" stroke-width="6"/><circle cx="77" cy="96" r="28" fill="#FFF1D6" stroke="#2B2D42" stroke-width="5"/><circle cx="141" cy="96" r="28" fill="#FFF1D6" stroke="#2B2D42" stroke-width="5"/><path d="M85 74 C84 50 99 39 110 39 C122 39 136 50 134 74" fill="#FFF1D6" stroke="#2B2D42" stroke-width="5"/><circle cx="92" cy="101" r="5" fill="#2B2D42"/><circle cx="126" cy="101" r="5" fill="#2B2D42"/><path d="M105 117 Q110 123 115 117" fill="none" stroke="#2B2D42" stroke-width="4" stroke-linecap="round"/><path d="M159 46l7-13 7 13 13 7-13 7-7 13-7-13-13-7z" fill="#FFD23F" stroke="#7A5A00" stroke-width="3"/>
+  </g>
+  <g fill="#FFFFFF" font-family="Fredoka, ui-rounded, Arial Rounded MT Bold, sans-serif" font-weight="700">
+    <text x="422" y="242" font-size="116" letter-spacing="-4">Kid Zone</text>
+    <text x="430" y="330" font-family="Nunito, ui-rounded, Arial, sans-serif" font-size="36" font-weight="700" fill="#E0ECFF">A little joy for every day.</text>
+  </g>
+  <g fill="#2B2D42" font-family="Nunito, ui-rounded, Arial, sans-serif" font-size="24" font-weight="800"><rect x="430" y="383" width="410" height="58" rx="29" fill="#FFF1D6"/><text x="465" y="420">Read · Play · Grow</text></g>
+</svg>

@@ -1,8 +1,11 @@
 import { captureException } from "@kidzone/observability";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import { bible } from "./routes/bible";
 import { health } from "./routes/health";
 import { jobs } from "./routes/jobs";
+import { quizzes } from "./routes/quizzes";
+import { saints } from "./routes/saints";
 
 const app = new Hono().basePath("/api");
 
@@ -17,6 +20,9 @@ app.onError((err, c) => {
 const routes = app
   .route("/health", health)
   .route("/jobs", jobs)
+  .route("/bible", bible)
+  .route("/saints", saints)
+  .route("/quizzes", quizzes)
   .get("/", (c) => c.json({ name: "api" }));
 
 export type AppType = typeof routes;

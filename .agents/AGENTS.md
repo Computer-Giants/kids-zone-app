@@ -17,6 +17,10 @@ Resend and React Email, Pino. TypeScript strict. Packages are consumed as source
 If you're not certain about an API, read the docs inside the installed package
 rather than going from memory.
 
+## Build approach
+
+Tracer Bullet (vertical slices built end to end through every layer so each slice works completely).
+
 ## How we work
 
 Spec driven. Nothing gets built without a spec.
@@ -201,3 +205,17 @@ Breaking one of these is worse than not finishing.
   around it.
 - **Don't read from the database in a loop.** Name your columns, limit list reads,
   subscribe instead of polling.
+
+## Context files
+
+- [apps/web/AGENTS.md](apps/web/AGENTS.md) (Next.js 15 front end client)
+- [apps/api/AGENTS.md](apps/api/AGENTS.md) (Hono API backend service)
+- [packages/auth/AGENTS.md](packages/auth/AGENTS.md) (Supabase session and auth helpers)
+- [packages/config/AGENTS.md](packages/config/AGENTS.md) (Shared tooling configurations)
+- [packages/db/AGENTS.md](packages/db/AGENTS.md) (Drizzle schemas and migrations)
+- [packages/email/AGENTS.md](packages/email/AGENTS.md) (Resend email delivery)
+- [packages/jobs/AGENTS.md](packages/jobs/AGENTS.md) (Inngest background workflows)
+- [packages/observability/AGENTS.md](packages/observability/AGENTS.md) (Pino structured logging)
+- [packages/ui/AGENTS.md](packages/ui/AGENTS.md) (Design system tokens and styles)
+- [packages/utils/AGENTS.md](packages/utils/AGENTS.md) (Pure helpers and unit math)
+- [packages/validators/AGENTS.md](packages/validators/AGENTS.md) (Zod input validation schemas)

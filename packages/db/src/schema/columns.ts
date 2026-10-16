@@ -12,6 +12,8 @@ import { timestamps } from "./timestamps";
 export const reviewMeta = () => ({
   status: contentStatus("status").notNull().default("draft"),
   locale: text("locale").notNull().default("en"),
+  /** Where this came from (book, site, permission). The reviewer compares it to the child's version. */
+  sourceNote: text("source_note"),
   createdBy: uuid("created_by").references(() => profiles.id, { onDelete: "set null" }),
   reviewedBy: uuid("reviewed_by").references(() => profiles.id, { onDelete: "set null" }),
   reviewedAt: timestamp("reviewed_at", { withTimezone: true }),

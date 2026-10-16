@@ -1,5 +1,6 @@
 import { sql } from "drizzle-orm";
 import {
+  boolean,
   check,
   date,
   index,
@@ -61,6 +62,8 @@ export const households = pgTable(
     parishId: uuid("parish_id").references(() => parishes.id, { onDelete: "set null" }),
     /** IANA zone. Streak days roll over here. */
     timezone: text("timezone").notNull().default("UTC"),
+    /** Optional 4-digit parent gate security passcode hash. */
+    parentPinHash: text("parent_pin_hash"),
     ...timestamps(),
   },
   (t) => [index("households_parish_idx").on(t.parishId)],
@@ -80,6 +83,8 @@ export const children = pgTable(
     /** Parent-entered. Age band is derived from this, never stored. */
     birthDate: date("birth_date", { mode: "string" }).notNull(),
     pinHash: text("pin_hash"),
+    /** A parent can hide their child from the leaderboard. */
+    showOnLeaderboard: boolean("show_on_leaderboard").notNull().default(true),
     /** Becomes 'graduated' at 16. History is kept. */
     status: childStatus("status").notNull().default("active"),
     graduatedAt: timestamp("graduated_at", { withTimezone: true }),
