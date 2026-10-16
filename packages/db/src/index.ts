@@ -34,4 +34,5 @@ export * from "./data/initial-scripture";
 export * from "./data/saints";
 export * from "./data/quizzes";
 export * from "./data/puzzles";
+export * from "./data/coin-rules";
 export { seedBibleData } from "./seed";

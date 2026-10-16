@@ -185,3 +185,5 @@ export function clearGuestProgress(storage?: Storage): void {
     }
   }
 }
+
+export * from "./rewards";

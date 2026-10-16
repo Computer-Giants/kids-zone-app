@@ -43,6 +43,26 @@ export async function recordReadingProgress({
         ? crypto.randomUUID()
         : `${childId}-${contentId}-${Date.now()}`;
 
+    // 1. Post to rewards ledger engine
+    const activityType =
+      entityType === "saint" || entityType === "saint_story"
+        ? "saint_viewed"
+        : entityType === "story"
+          ? "story_read"
+          : "verse_read";
+
+    await fetch("/api/rewards/activity", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        childId,
+        type: activityType,
+        entityType: entityType === "saint" || entityType === "saint_story" ? "saint" : "story",
+        entityId: contentId,
+        idempotencyKey,
+      }),
+    });
+
     const endpoint =
       entityType === "saint" || entityType === "saint_story"
         ? "/api/saints/readings/complete"

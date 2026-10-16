@@ -1,7 +1,7 @@
 # 0012. Rewards Ledger and Streak Tracking
 
 **Date**: 2026-10-16
-**Status**: Proposed
+**Status**: Accepted
 
 ## Summary
 

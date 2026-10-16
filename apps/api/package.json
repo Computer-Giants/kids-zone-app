@@ -20,6 +20,7 @@
     "@kidzone/db": "workspace:*",
     "@kidzone/jobs": "workspace:*",
     "@kidzone/observability": "workspace:*",
+    "@kidzone/utils": "workspace:*",
     "@kidzone/validators": "workspace:*",
     "hono": "^4.6.14",
     "zod": "^3.24.1"

@@ -47,6 +47,8 @@ export { PuzzleCard, type PuzzleCardProps } from "./components/puzzle-card";
 export { TileMatchingGrid, type TileMatchingGridProps } from "./components/tile-matching-grid";
 export { WordSearchBoard, type WordSearchBoardProps } from "./components/word-search-board";
 export { WordScrambleBoard, type WordScrambleBoardProps } from "./components/word-scramble-board";
+export { StreakBadge, type StreakBadgeProps } from "./components/streak-badge";
+export { RewardSummaryBar, type RewardSummaryBarProps } from "./components/reward-summary-bar";
 export { cn } from "./lib/utils";
 export {
   ArrowLeft,
@@ -56,8 +58,10 @@ export {
   Check,
   ChevronLeft,
   ChevronRight,
+  Coins,
   Compass,
   Crown,
+  Flame,
   Gamepad2,
   Grid,
   HeartHandshake,
@@ -78,6 +82,7 @@ export {
   ShieldCheck,
   Sparkles,
   SpellCheck,
+  Star,
   Trash2,
   Users,
   Volume2,

@@ -167,7 +167,7 @@ export function ParentDashboardClient({ children, hasPasscode }: ParentDashboard
                     <ChildAvatar avatar={child.avatar} size="lg" />
                     <div>
                       <h3 className="font-heading text-ink text-lg font-bold">{child.nickname}</h3>
-                      <div className="mt-1 flex items-center gap-2">
+                      <div className="mt-1 flex flex-wrap items-center gap-2">
                         <span className="bg-slate-tint font-heading text-slate rounded-full px-2.5 py-0.5 text-xs font-bold">
                           {formatAgeBand(band)}
                         </span>
@@ -180,6 +180,12 @@ export function ParentDashboardClient({ children, hasPasscode }: ParentDashboard
                             PIN
                           </span>
                         )}
+                        <span
+                          className="flex items-center gap-1 rounded-full border border-yellow-200 bg-yellow-50 px-2.5 py-0.5 text-[11px] font-bold text-yellow-900"
+                          title="Permanent spiritual progress stars"
+                        >
+                          ⭐ Active Explorer
+                        </span>
                       </div>
                     </div>
                   </div>

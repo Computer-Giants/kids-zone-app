@@ -121,6 +121,22 @@ export function QuizRunnerView({ quiz, session }: QuizRunnerViewProps) {
     }
 
     try {
+      // 1. Post to rewards ledger engine
+      await fetch("/api/rewards/activity", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          childId,
+          type: "quiz_completed",
+          entityType: "quiz",
+          entityId: quiz.slug,
+          score: 100,
+          idempotencyKey,
+          metadata: { quizTitle: quiz.title },
+        }),
+      });
+
+      // 2. Complete quiz endpoint
       const res = await fetch("/api/quizzes/complete", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

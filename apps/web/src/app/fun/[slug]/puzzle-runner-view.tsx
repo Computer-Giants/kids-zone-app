@@ -55,6 +55,22 @@ export function PuzzleRunnerView({ puzzle, session }: PuzzleRunnerViewProps) {
           ? crypto.randomUUID()
           : `${childId}-${puzzle.id}-${Date.now()}`;
 
+      // 1. Post to rewards ledger engine
+      await fetch("/api/rewards/activity", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          childId,
+          type: "puzzle_completed",
+          entityType: "puzzle",
+          entityId: puzzle.id,
+          score: 100,
+          idempotencyKey,
+          metadata: { puzzleSlug: puzzle.slug },
+        }),
+      });
+
+      // 2. Also notify puzzles completion route
       const res = await fetch("/api/puzzles/complete", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -74,7 +90,7 @@ export function PuzzleRunnerView({ puzzle, session }: PuzzleRunnerViewProps) {
     } catch {
       setStarsAwarded(2);
     }
-  }, [puzzle.id, childId]);
+  }, [puzzle.id, puzzle.slug, childId]);
 
   const handleReplay = () => {
     setIsCompleted(false);

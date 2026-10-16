@@ -240,18 +240,18 @@ Word search, tile matching, and scramble puzzles with Catholic church themes and
 
 ## Slice 4: Rewards and Daily Habits
 
-### 12. Rewards ledger and streak tracking · planned
+### 12. Rewards ledger and streak tracking · done
 
 Append only ledger tracking spendable coins and permanent stars, with daily streak calculations respecting the household timezone.
 **Done when:** activity completions log idempotent events, ledger entries calculate balances correctly, and daily caps prevent over earning. (basis: .agents/AGENTS.md)
 
 - [x] Design it (spec): [0012](../specs/0012-rewards-ledger-and-streak-tracking.md)
-- [ ] Build it: /develop rewards ledger and streak tracking
-  - [ ] Pure streak calculation and daily cap helpers in packages/utils (AC-3, AC-6)
-  - [ ] Default coin rules in packages/db and ledger transaction logic in apps/api (AC-1, AC-2, AC-4, AC-5)
-  - [ ] StreakBadge, RewardSummaryBar, and child dashboard reward views in apps/web (AC-7, AC-8)
-- [ ] Verify it: /check verify rewards ledger and streak tracking
-- [ ] Test it: /test rewards ledger and streak tracking
+- [x] Build it: /develop rewards ledger and streak tracking
+  - [x] Pure streak calculation and daily cap helpers in packages/utils (AC-3, AC-6)
+  - [x] Default coin rules in packages/db and ledger transaction logic in apps/api (AC-1, AC-2, AC-4, AC-5)
+  - [x] StreakBadge, RewardSummaryBar, and child dashboard reward views in apps/web (AC-7, AC-8)
+- [x] Verify it: /check verify rewards ledger and streak tracking
+- [x] Test it: /test rewards ledger and streak tracking
       Code in `packages/db/` and `apps/api/`
 
 ### 13. Leaderboard and daily review · planned
