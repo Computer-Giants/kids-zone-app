@@ -268,6 +268,20 @@ Weekly star rankings partitioned by real age band showing nicknames only, paired
 - [ ] Test it: /test leaderboard and daily review
       Code in `packages/jobs/` and `apps/web/`
 
+### 14. Privacy first analytics and habit tracking · planned
+
+Self hosted anonymous telemetry pipeline and household habit metrics, adhering to zero child tracking rules.
+**Done when:** client emits zero third party trackers, activity pings pass through anonymous server aggregation, and parent views display household habit statistics. (basis: .agents/AGENTS.md)
+
+- [x] Design it (spec): [0014](../specs/0014-privacy-first-analytics-and-habit-tracking.md)
+- [ ] Build it: /develop privacy first analytics and habit tracking
+  - [ ] Anonymous telemetry schema in packages/validators (AC-2, AC-3)
+  - [ ] Structured event redaction in packages/observability and API route in apps/api (AC-3, AC-5)
+  - [ ] Daily rollups job in packages/jobs and parent habit dashboard in apps/web (AC-6, AC-7)
+- [ ] Verify it: /check verify privacy first analytics and habit tracking
+- [ ] Test it: /test privacy first analytics and habit tracking
+      Code in `packages/observability/`, `apps/api/`, and `apps/web/`
+
 ---
 
 ## Deferred
