@@ -5,11 +5,14 @@ const defaultAppUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : "http://localhost:3000";
 
-const defaultApiUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : process.env.NEXT_PUBLIC_VERCEL_URL
-    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-    : "http://localhost:8787";
+const defaultApiUrl =
+  process.env.INTERNAL_API_URL ??
+  process.env.API_URL ??
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : process.env.NEXT_PUBLIC_VERCEL_URL
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+      : "http://localhost:8787");
 
 export const env = createEnv({
   server: {
@@ -19,7 +22,7 @@ export const env = createEnv({
     NEXT_PUBLIC_APP_URL: z.string().url().default(defaultAppUrl),
   },
   runtimeEnv: {
-    API_URL: process.env.API_URL,
+    API_URL: process.env.INTERNAL_API_URL || process.env.API_URL,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,

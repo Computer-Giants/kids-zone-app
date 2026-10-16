@@ -27,3 +27,4 @@ const routes = app
 
 export type AppType = typeof routes;
 export { app, routes };
+export default app;
