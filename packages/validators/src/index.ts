@@ -330,3 +330,9 @@ export const saintsQuerySchema = z.object({
   offset: z.coerce.number().int().min(0).default(0),
 });
 export type SaintsQuery = z.infer<typeof saintsQuerySchema>;
+
+// ============================================================================
+// Church Puzzles
+// ============================================================================
+
+export * from "./puzzle";

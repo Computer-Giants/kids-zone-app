@@ -221,19 +221,19 @@ Four question quiz engine linked to catechism lessons, featuring encouraging lam
 - [x] Test it: /test quizzes and lamb guide feedback
       Code in `apps/web/` and `packages/validators/`
 
-### 11. Church puzzles engine · planned
+### 11. Church puzzles engine · done
 
 Word search, tile matching, and scramble puzzles with Catholic church themes and Zod validated configurations.
 **Done when:** child can complete a puzzle on mobile touch screens with clear win states and gentle hints. (basis: docs/data-model.md)
 
 - [x] Design it (spec): [0011](../specs/0011-church-puzzles-engine.md)
-- [ ] Build it: /develop church puzzles engine
-  - [ ] Zod puzzle configuration schemas in packages/validators (AC-2)
-  - [ ] Church puzzle seed data in packages/db (AC-1, AC-2)
-  - [ ] WordSearchBoard, TileMatchingGrid, and WordScrambleBoard UI components (AC-3, AC-4, AC-5, AC-6)
-  - [ ] Puzzle catalog page, hint mechanics, and completion tracking (AC-1, AC-7, AC-8)
-- [ ] Verify it: /check verify church puzzles engine
-- [ ] Test it: /test church puzzles engine
+- [x] Build it: /develop church puzzles engine
+  - [x] Zod puzzle configuration schemas in packages/validators (AC-2)
+  - [x] Church puzzle seed data in packages/db (AC-1, AC-2)
+  - [x] WordSearchBoard, TileMatchingGrid, and WordScrambleBoard UI components (AC-3, AC-4, AC-5, AC-6)
+  - [x] Puzzle catalog page, hint mechanics, and completion tracking (AC-1, AC-7, AC-8)
+- [x] Verify it: /check verify church puzzles engine
+- [x] Test it: /test church puzzles engine
       Code in `apps/web/` and `packages/validators/`
 
 ---

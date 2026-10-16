@@ -43,6 +43,10 @@ export { PatronageBadge, type PatronageBadgeProps } from "./components/patronage
 export { SaintCard, type SaintCardProps } from "./components/saint-card";
 export { QuizCard, type QuizCardProps } from "./components/quiz-card";
 export { QuizOptionButton, type QuizOptionButtonProps } from "./components/quiz-option-button";
+export { PuzzleCard, type PuzzleCardProps } from "./components/puzzle-card";
+export { TileMatchingGrid, type TileMatchingGridProps } from "./components/tile-matching-grid";
+export { WordSearchBoard, type WordSearchBoardProps } from "./components/word-search-board";
+export { WordScrambleBoard, type WordScrambleBoardProps } from "./components/word-scramble-board";
 export { cn } from "./lib/utils";
 export {
   ArrowLeft,
@@ -55,6 +59,7 @@ export {
   Compass,
   Crown,
   Gamepad2,
+  Grid,
   HeartHandshake,
   HelpCircle,
   House,
@@ -72,6 +77,7 @@ export {
   ShieldAlert,
   ShieldCheck,
   Sparkles,
+  SpellCheck,
   Trash2,
   Users,
   Volume2,

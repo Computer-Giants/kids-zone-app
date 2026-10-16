@@ -5,6 +5,7 @@ import { bible } from "./routes/bible";
 import { health } from "./routes/health";
 import { jobs } from "./routes/jobs";
 import { quizzes } from "./routes/quizzes";
+import { puzzles } from "./routes/puzzles";
 import { saints } from "./routes/saints";
 
 const app = new Hono().basePath("/api");
@@ -23,6 +24,7 @@ const routes = app
   .route("/bible", bible)
   .route("/saints", saints)
   .route("/quizzes", quizzes)
+  .route("/puzzles", puzzles)
   .get("/", (c) => c.json({ name: "api" }));
 
 export type AppType = typeof routes;
