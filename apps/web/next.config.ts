@@ -2,12 +2,14 @@ import path from "node:path";
 import type { NextConfig } from "next";
 
 const config: NextConfig = {
-  // `standalone` makes the Docker/VPS image small; disabled on Windows by default to avoid non-elevated symlink EPERM.
-  output: process.env.NEXT_STANDALONE
-    ? "standalone"
-    : process.platform === "win32"
-      ? undefined
-      : "standalone",
+  // Vercel manages serverless output automatically; `standalone` is used for Docker/VPS deployments.
+  output: process.env.VERCEL
+    ? undefined
+    : process.env.NEXT_STANDALONE
+      ? "standalone"
+      : process.platform === "win32"
+        ? undefined
+        : "standalone",
   outputFileTracingRoot: path.join(process.cwd(), "../.."),
   eslint: {
     ignoreDuringBuilds: true,
