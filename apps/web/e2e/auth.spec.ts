@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test.describe("Parent Authentication and Route Protection", () => {
   test("unauthenticated visit to /parent redirects to /login?next=/parent", async ({ page }) => {
     await page.goto("/parent");
-    await expect(page).toHaveURL(/\/login\?next=%2Fparent/);
+    await expect(page).toHaveURL(/\/login\?next=(%2F|\/)parent/);
     await expect(page.getByRole("heading", { name: "Parent Sign In" })).toBeVisible();
   });
 

@@ -1,3 +1,5 @@
+import { createClient } from "@kidzone/auth/server";
+import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
@@ -9,6 +11,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ParentLayout({ children }: { children: ReactNode }) {
+export default async function ParentLayout({ children }: { children: ReactNode }) {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect("/login?next=/parent");
+  }
+
   return <>{children}</>;
 }
