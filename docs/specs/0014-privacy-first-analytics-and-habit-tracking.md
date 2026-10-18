@@ -1,7 +1,7 @@
 # 0014. Privacy First Analytics and Habit Tracking
 
 **Date**: 2026-10-16
-**Status**: Proposed
+**Status**: Accepted
 
 ## Summary
 

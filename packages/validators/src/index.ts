@@ -342,3 +342,5 @@ export * from "./puzzle";
 // ============================================================================
 
 export * from "./rewards";
+export * from "./leaderboard";
+export * from "./telemetry";

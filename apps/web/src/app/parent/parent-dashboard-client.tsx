@@ -13,7 +13,11 @@ import {
 } from "@kidzone/ui";
 import { calculateAgeBand, formatAgeBand } from "@kidzone/utils";
 import React, { useState, useTransition } from "react";
-import { deleteChildAction, setParentPasscodeAction } from "./actions";
+import {
+  deleteChildAction,
+  setParentPasscodeAction,
+  toggleLeaderboardVisibilityAction,
+} from "./actions";
 import { CreateChildModal } from "./create-child-modal";
 
 export interface ChildRecord {
@@ -23,6 +27,7 @@ export interface ChildRecord {
   birth_date: string;
   pin_hash: string | null;
   status: string;
+  show_on_leaderboard?: boolean;
 }
 
 export interface ParentDashboardClientProps {
@@ -192,6 +197,25 @@ export function ParentDashboardClient({ children, hasPasscode }: ParentDashboard
 
                   {/* Actions */}
                   <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const nextVisibility = child.show_on_leaderboard === false ? true : false;
+                        startTransition(async () => {
+                          await toggleLeaderboardVisibilityAction(child.id, nextVisibility);
+                        });
+                      }}
+                      disabled={isPending}
+                      title={
+                        child.show_on_leaderboard !== false
+                          ? "Visible on weekly stars leaderboard (tap to hide)"
+                          : "Hidden from weekly stars leaderboard (tap to show)"
+                      }
+                      className="border-sand-border bg-sand text-ink-soft hover:text-ink focus-accessible cursor-pointer rounded-xl border px-2.5 py-1 text-xs font-bold transition-colors"
+                    >
+                      {child.show_on_leaderboard !== false ? "🏆 Public" : "🔒 Hidden"}
+                    </button>
+
                     <button
                       type="button"
                       onClick={() => handleDeleteChild(child.id)}

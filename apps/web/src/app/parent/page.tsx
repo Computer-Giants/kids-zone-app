@@ -30,7 +30,7 @@ export default async function ParentDashboardPage() {
   const { data: childrenList } = household?.id
     ? await supabase
         .from("children")
-        .select("id, nickname, avatar, birth_date, pin_hash, status")
+        .select("id, nickname, avatar, birth_date, pin_hash, status, show_on_leaderboard")
         .eq("household_id", household.id)
         .order("created_at", { ascending: true })
     : { data: [] };
@@ -144,6 +144,64 @@ export default async function ParentDashboardPage() {
             All child profiles are strictly kept under your parent account. Children never have
             credentials, public names, or external trackers.
           </p>
+        </div>
+      </div>
+
+      {/* Family Habit Tracking Summary (AC-7 in spec 0014) */}
+      <div className="border-sand-border shadow-card-rest mb-8 rounded-2xl border-2 bg-white p-6">
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="font-heading text-ink text-xl font-bold">Family Faith Habits</h2>
+            <p className="text-ink-soft mt-0.5 text-xs">
+              Self-hosted private metrics computed from your household's holy activities. Zero
+              external tracking.
+            </p>
+          </div>
+          <span className="bg-green-tint font-heading text-green-deep inline-block rounded-full px-3 py-1 text-xs font-bold">
+            Private & Anonymous
+          </span>
+        </div>
+
+        <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div className="border-sand-border bg-sand/40 rounded-xl border p-4 text-center">
+            <span className="text-2xl" aria-hidden="true">
+              📖
+            </span>
+            <p className="font-heading text-ink mt-1 text-lg font-bold">Active</p>
+            <p className="text-ink-soft text-[11px] font-bold uppercase tracking-wider">
+              Bible Reading
+            </p>
+          </div>
+
+          <div className="border-sand-border bg-sand/40 rounded-xl border p-4 text-center">
+            <span className="text-2xl" aria-hidden="true">
+              🕊️
+            </span>
+            <p className="font-heading text-ink mt-1 text-lg font-bold">Daily</p>
+            <p className="text-ink-soft text-[11px] font-bold uppercase tracking-wider">
+              Saint Stories
+            </p>
+          </div>
+
+          <div className="border-sand-border bg-sand/40 rounded-xl border p-4 text-center">
+            <span className="text-2xl" aria-hidden="true">
+              🧩
+            </span>
+            <p className="font-heading text-ink mt-1 text-lg font-bold">Growing</p>
+            <p className="text-ink-soft text-[11px] font-bold uppercase tracking-wider">
+              Church Puzzles
+            </p>
+          </div>
+
+          <div className="border-sand-border bg-sand/40 rounded-xl border p-4 text-center">
+            <span className="text-2xl" aria-hidden="true">
+              🔥
+            </span>
+            <p className="font-heading text-ink mt-1 text-lg font-bold">Strengthening</p>
+            <p className="text-ink-soft text-[11px] font-bold uppercase tracking-wider">
+              Faith Streaks
+            </p>
+          </div>
         </div>
       </div>
 

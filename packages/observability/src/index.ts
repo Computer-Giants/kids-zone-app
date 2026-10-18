@@ -17,3 +17,5 @@ export const childLogger = (bindings: Record<string, unknown>) => logger.child(b
 export function captureException(err: unknown, context?: Record<string, unknown>) {
   logger.error({ err, ...context }, "captured exception");
 }
+
+export * from "./telemetry";

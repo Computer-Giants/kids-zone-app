@@ -32,7 +32,7 @@ export async function selectChildAction(childId: string): Promise<ProfileActionR
 
   // Fetch child profile to verify existence and check if PIN is configured
   const { data: profile, error } = await supabase
-    .from("child_profiles")
+    .from("children")
     .select("id, household_id, pin_hash")
     .eq("id", childId)
     .maybeSingle();
@@ -88,7 +88,7 @@ export async function unlockChildPinAction(
   }
 
   const { data: profile } = await supabase
-    .from("child_profiles")
+    .from("children")
     .select("id, pin_hash")
     .eq("id", childId)
     .maybeSingle();

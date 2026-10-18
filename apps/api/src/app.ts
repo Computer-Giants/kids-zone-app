@@ -8,6 +8,9 @@ import { quizzes } from "./routes/quizzes";
 import { puzzles } from "./routes/puzzles";
 import { rewards } from "./routes/rewards";
 import { saints } from "./routes/saints";
+import { leaderboard } from "./routes/leaderboard";
+import { review } from "./routes/review";
+import { telemetry } from "./routes/telemetry";
 
 const app = new Hono().basePath("/api");
 
@@ -27,6 +30,9 @@ const routes = app
   .route("/quizzes", quizzes)
   .route("/puzzles", puzzles)
   .route("/rewards", rewards)
+  .route("/leaderboard", leaderboard)
+  .route("/review", review)
+  .route("/telemetry", telemetry)
   .get("/", (c) => c.json({ name: "api" }));
 
 export type AppType = typeof routes;

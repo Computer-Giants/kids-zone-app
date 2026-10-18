@@ -57,8 +57,8 @@ export async function getActiveLearnerSession(): Promise<LearnerSession> {
 
     if (user) {
       const { data: profile } = await supabase
-        .from("child_profiles")
-        .select("id, household_id, nickname, avatar_id, birth_date, pin_hash")
+        .from("children")
+        .select("id, household_id, nickname, avatar, birth_date, pin_hash")
         .eq("id", childId)
         .maybeSingle();
 
@@ -67,7 +67,7 @@ export async function getActiveLearnerSession(): Promise<LearnerSession> {
           id: profile.id,
           householdId: profile.household_id,
           nickname: profile.nickname,
-          avatarId: profile.avatar_id,
+          avatarId: profile.avatar,
           birthDate: profile.birth_date,
           ageBand: deriveAgeBand(profile.birth_date),
           hasPin: Boolean(profile.pin_hash),

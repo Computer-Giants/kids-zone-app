@@ -1,11 +1,9 @@
-import { Inngest } from "inngest";
+import { inngest } from "./client";
+export { inngest } from "./client";
 import { serve as serveHono } from "inngest/hono";
 
 /** Mount in a Hono app: `app.on(["GET","POST","PUT"], "/", serve({ client: inngest, functions }))`. */
 export const serve = serveHono;
-
-/** Inngest works on Vercel and on a VPS (self-host or cloud), so jobs stay portable. */
-export const inngest = new Inngest({ id: "app" });
 
 export const sendWelcome = inngest.createFunction(
   { id: "send-welcome" },
@@ -18,4 +16,9 @@ export const sendWelcome = inngest.createFunction(
   },
 );
 
-export const functions = [sendWelcome];
+import { aggregateWeeklyStarsJob } from "./jobs/leaderboard";
+import { aggregateDailyMetricsJob } from "./jobs/aggregate-metrics";
+
+export { aggregateWeeklyStarsJob, aggregateDailyMetricsJob };
+
+export const functions = [sendWelcome, aggregateWeeklyStarsJob, aggregateDailyMetricsJob];

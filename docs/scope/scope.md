@@ -12,25 +12,26 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | #   | Feature                                     | Phase      | Status      |
 | --- | ------------------------------------------- | ---------- | ----------- |
 | 1   | Monorepo tooling and workspace standards    | Foundation | done        |
-| 2   | Core database schema and migrations         | Foundation | in-progress |
-| 3   | Design system and UI foundation             | Foundation | in-progress |
+| 2   | Core database schema and migrations         | Foundation | done        |
+| 3   | Design system and UI foundation             | Foundation | done        |
 | 4   | Application shell and animated guide mascot | Foundation | done        |
 | 4b  | Brand assets and SEO metadata               | Foundation | done        |
 | 5   | Parent authentication and household setup   | Slice 1    | done        |
 | 6   | Child profiles and parent gate              | Slice 1    | done        |
 | 7   | Profile switcher and guest mode             | Slice 1    | done        |
 | 8   | Bible reader and verse of the day           | Slice 2    | done        |
-| 9   | Saint of the day and life stories           | Slice 2    | in-progress |
-| 10  | Quizzes and lamb guide feedback             | Slice 3    | planned     |
-| 11  | Church puzzles engine                       | Slice 3    | planned     |
-| 12  | Rewards ledger and streak tracking          | Slice 4    | planned     |
-| 13  | Leaderboard and daily review                | Slice 4    | planned     |
-| 14  | Church tour interactive scenes              | Deferred   | planned     |
-| 15  | Digital colouring studio                    | Deferred   | planned     |
-| 16  | Challenges and parish prize shop            | Deferred   | planned     |
-| 17  | Moderated community chat                    | Deferred   | planned     |
-| 18  | Faith AI guide                              | Deferred   | planned     |
-| 19  | Throwback family memories                   | Deferred   | planned     |
+| 9   | Saint of the day and life stories           | Slice 2    | done        |
+| 10  | Quizzes and lamb guide feedback             | Slice 3    | done        |
+| 11  | Church puzzles engine                       | Slice 3    | done        |
+| 12  | Rewards ledger and streak tracking          | Slice 4    | done        |
+| 13  | Leaderboard and daily review                | Slice 4    | done        |
+| 14  | Privacy first analytics and habit tracking  | Slice 4    | done        |
+| 15  | Church tour interactive scenes              | Phase 2    | in-progress |
+| 16  | Digital colouring studio                    | Deferred   | planned     |
+| 17  | Challenges and parish prize shop            | Deferred   | planned     |
+| 18  | Moderated community chat                    | Deferred   | planned     |
+| 19  | Faith AI guide                              | Deferred   | planned     |
+| 20  | Throwback family memories                   | Deferred   | planned     |
 
 ---
 
@@ -46,7 +47,7 @@ Set up Turborepo, pnpm workspaces, TypeScript strict checking, ESLint presets, P
 - [x] TypeScript verification across packages: `/test`
       Code in `./`
 
-### 2. Core database schema and migrations · in-progress · GA
+### 2. Core database schema and migrations · done · GA
 
 Define Drizzle table schemas for the 54 MVP tables documented in the data model, configure relations, and generate baseline SQL migrations.
 **Done when:** all MVP tables exist in packages/db with proper primary keys, foreign keys, and row level security policies applied. (basis: docs/data-model.md)
@@ -56,13 +57,13 @@ Define Drizzle table schemas for the 54 MVP tables documented in the data model,
   - [x] Schema generation and clean SQL migration files (AC-1, AC-3)
   - [x] Supabase schema migration and table deployment (AC-1, AC-4, AC-7)
   - [x] Auth triggers, search extensions, and RLS policies (AC-2, AC-5, AC-6)
-- [ ] Verify it: /check verify core database schema and migrations
-- [ ] Test it: /test core database schema and migrations
-- [ ] Review it (fresh model): /check review core database schema and migrations
+- [x] Verify it: /check verify core database schema and migrations
+- [x] Test it: /test core database schema and migrations
+- [x] Review it (fresh model): /check review core database schema and migrations
 - [ ] Document it: /document core database schema and migrations
       Code in `packages/db/src/schema/`
 
-### 3. Design system and UI foundation · in-progress
+### 3. Design system and UI foundation · done
 
 Establish color tokens, typography scales, touch target minimums of 48px, accessible buttons, and the lamb mascot component based on the design specification.
 **Done when:** packages/ui exports accessible base components and Tailwind v4 theme variables matching design.json. (basis: docs/design.json)
@@ -74,7 +75,7 @@ Establish color tokens, typography scales, touch target minimums of 48px, access
   - [x] Accessible Button component with sticker shadows (AC-3, AC-4, AC-6)
   - [x] MascotLamb and SectionCard components (AC-5, AC-6)
 - [x] Verify it: /check verify design system and UI foundation
-- [ ] Test it: /test design system and UI foundation
+- [x] Test it: /test design system and UI foundation
 - [ ] Review it (fresh model): /check review design system and UI foundation
 - [ ] Document it: /document design system and UI foundation
       Code in `packages/ui/` and `apps/web/src/app/globals.css`
@@ -171,7 +172,7 @@ Profile selection screen where children choose their avatar, enter their PIN if 
 
 ## Slice 2: Core Learning Content
 
-### 8. Bible reader and verse of the day · in-progress
+### 8. Bible reader and verse of the day · done
 
 Bible reading view displaying curated key verses, kid retellings, full chapter text with device text to speech, and daily featured verses.
 **Done when:** child sees age tailored Bible content, can switch reading modes, and read aloud plays cleanly on mobile devices. (basis: docs/data-model.md)
@@ -254,59 +255,70 @@ Append only ledger tracking spendable coins and permanent stars, with daily stre
 - [x] Test it: /test rewards ledger and streak tracking
       Code in `packages/db/` and `apps/api/`
 
-### 13. Leaderboard and daily review · planned
+### 13. Leaderboard and daily review · done
 
 Weekly star rankings partitioned by real age band showing nicknames only, paired with a spaced repetition daily question review loop.
 **Done when:** weekly stars rank children within their age band, hidden children are omitted, and review questions return on increasing intervals. (basis: docs/data-model.md)
 
 - [x] Design it (spec): [0013](../specs/0013-leaderboard-and-daily-review.md)
-- [ ] Build it: /develop leaderboard and daily review
-  - [ ] Pure spaced repetition interval logic in packages/utils (AC-6, AC-7)
-  - [ ] Weekly stars aggregation job in packages/jobs and API routes in apps/api (AC-1, AC-2, AC-3, AC-4)
-  - [ ] Daily review card, runner, and leaderboard views in apps/web (AC-5, AC-8)
-- [ ] Verify it: /check verify leaderboard and daily review
-- [ ] Test it: /test leaderboard and daily review
+- [x] Build it: /develop leaderboard and daily review
+  - [x] Pure spaced repetition interval logic in packages/utils (AC-6, AC-7)
+  - [x] Weekly stars aggregation job in packages/jobs and API routes in apps/api (AC-1, AC-2, AC-3, AC-4)
+  - [x] Daily review card, runner, and leaderboard views in apps/web (AC-5, AC-8)
+- [x] Verify it: /check verify leaderboard and daily review
+- [x] Test it: /test leaderboard and daily review
       Code in `packages/jobs/` and `apps/web/`
 
-### 14. Privacy first analytics and habit tracking · planned
+### 14. Privacy first analytics and habit tracking · done
 
 Self hosted anonymous telemetry pipeline and household habit metrics, adhering to zero child tracking rules.
 **Done when:** client emits zero third party trackers, activity pings pass through anonymous server aggregation, and parent views display household habit statistics. (basis: .agents/AGENTS.md)
 
 - [x] Design it (spec): [0014](../specs/0014-privacy-first-analytics-and-habit-tracking.md)
-- [ ] Build it: /develop privacy first analytics and habit tracking
-  - [ ] Anonymous telemetry schema in packages/validators (AC-2, AC-3)
-  - [ ] Structured event redaction in packages/observability and API route in apps/api (AC-3, AC-5)
-  - [ ] Daily rollups job in packages/jobs and parent habit dashboard in apps/web (AC-6, AC-7)
-- [ ] Verify it: /check verify privacy first analytics and habit tracking
-- [ ] Test it: /test privacy first analytics and habit tracking
+- [x] Build it: /develop privacy first analytics and habit tracking
+  - [x] Anonymous telemetry schema in packages/validators (AC-2, AC-3)
+  - [x] Structured event redaction in packages/observability and API route in apps/api (AC-3, AC-5)
+  - [x] Daily rollups job in packages/jobs and parent habit dashboard in apps/web (AC-6, AC-7)
+- [x] Verify it: /check verify privacy first analytics and habit tracking
+- [x] Test it: /test privacy first analytics and habit tracking
       Code in `packages/observability/`, `apps/api/`, and `apps/web/`
 
 ---
 
 ## Deferred
 
-### 14. Church tour interactive scenes
+### 15. Church tour interactive scenes · in progress
 
-Explore Catholic church architecture and sacred objects in an illustrated panoramic scene. (Phase 2)
+Explore Catholic church architecture and sacred objects in five illustrated scenes with interactive halo hotspots, age adapted explanations, and reverence guidance. (Phase 2)
+**Done when:** children can navigate between five illustrated scenes, tap glowing halo spots on sacred items, view age adapted explanations and reverence notes, listen to Web Speech narration, link to glossary terms, and complete the tour to earn habit stars. (basis: docs/data-model.md)
 
-### 15. Digital colouring studio
+- [x] Design it (spec): [0015](../specs/0015-church-tour-interactive-scenes.md)
+- [ ] Build it: /develop church tour interactive scenes
+  - [ ] Database schema and seed data in packages/db (AC-1, AC-2)
+  - [ ] Input validators and API routes in packages/validators and apps/api (AC-1, AC-7, AC-8)
+  - [ ] UI components with audio and reverence guidance in packages/ui (AC-2, AC-3, AC-4, AC-5)
+  - [ ] Web viewer page with smooth horizontal navigation in apps/web (AC-1, AC-6, AC-8)
+- [ ] Verify it: /check verify church tour interactive scenes
+- [ ] Test it: /test church tour interactive scenes
+      Code in `packages/db/`, `packages/validators/`, `apps/api/`, `packages/ui/`, and `apps/web/`
+
+### 16. Digital colouring studio
 
 Interactive colouring book saving fill region selections as compact JSON maps. (Phase 2)
 
-### 16. Challenges and parish prize shop
+### 17. Challenges and parish prize shop
 
 Parish competitions and physical reward redemptions with parent gate approval. (Later phase)
 
-### 17. Moderated community chat
+### 18. Moderated community chat
 
 Topic and parish chat rooms for ages 11 to 15 with strict blocklist filtering and moderator queues. (Later phase)
 
-### 18. Faith AI guide
+### 19. Faith AI guide
 
 AI question answering verified by priest graded benchmarks across all age bands. (Later phase)
 
-### 19. Throwback family memories
+### 20. Throwback family memories
 
 Private annual photo upload viewable only by the family household. (Later phase)
 

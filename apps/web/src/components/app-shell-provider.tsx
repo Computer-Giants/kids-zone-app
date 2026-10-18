@@ -121,6 +121,7 @@ export function AppShellProvider({ children, initialLearner = null }: AppShellPr
         activeSection={activeSection}
         onParentGateClick={handleParentGateClick}
         rightSlot={rightSlot}
+        logoSrc="/images/favicon.svg"
       >
         {children}
       </AppShell>

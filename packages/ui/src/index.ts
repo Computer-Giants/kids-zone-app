@@ -49,6 +49,13 @@ export { WordSearchBoard, type WordSearchBoardProps } from "./components/word-se
 export { WordScrambleBoard, type WordScrambleBoardProps } from "./components/word-scramble-board";
 export { StreakBadge, type StreakBadgeProps } from "./components/streak-badge";
 export { RewardSummaryBar, type RewardSummaryBarProps } from "./components/reward-summary-bar";
+export { RankBadge, type RankBadgeProps } from "./components/rank-badge";
+export {
+  LeaderboardList,
+  type LeaderboardListProps,
+  type LeaderboardUserItem,
+} from "./components/leaderboard-list";
+export { DailyReviewCard, type DailyReviewCardProps } from "./components/daily-review-card";
 export { cn } from "./lib/utils";
 export {
   ArrowLeft,

@@ -3,7 +3,6 @@ import {
   eq,
   getDb,
   getPuzzleBySlug,
-  getPuzzlesByDifficulty,
   getPuzzlesByType,
   SEED_PUZZLES,
   tables,

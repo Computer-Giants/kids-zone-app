@@ -1,7 +1,7 @@
 # 0013. Leaderboard and Daily Review
 
 **Date**: 2026-10-16
-**Status**: Proposed
+**Status**: Accepted
 
 ## Summary
 

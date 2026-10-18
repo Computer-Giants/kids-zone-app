@@ -354,3 +354,48 @@ export async function verifyParentPasscodeAction(passcode: string): Promise<Acti
 
   return { success: true };
 }
+
+/**
+ * AC-2 in spec 0013: Toggle whether a child is visible on the weekly public leaderboard.
+ */
+export async function toggleLeaderboardVisibilityAction(
+  childId: string,
+  showOnLeaderboard: boolean,
+): Promise<ActionResult> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return { success: false, error: "Authentication required." };
+  }
+
+  const { data: household } = await supabase
+    .from("households")
+    .select("id")
+    .eq("owner_id", user.id)
+    .maybeSingle();
+
+  if (!household) {
+    return { success: false, error: "Household not found." };
+  }
+
+  const { error } = await supabase
+    .from("children")
+    .update({ show_on_leaderboard: showOnLeaderboard })
+    .eq("id", childId)
+    .eq("household_id", household.id);
+
+  if (error) {
+    return { success: false, error: error.message };
+  }
+
+  revalidatePath("/parent");
+  return {
+    success: true,
+    message: showOnLeaderboard
+      ? "Child will appear on the friendly weekly leaderboard."
+      : "Child is now hidden from the weekly leaderboard.",
+  };
+}

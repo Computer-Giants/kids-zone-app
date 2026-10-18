@@ -32,8 +32,8 @@ export default async function SelectProfilePage() {
       hasParentPasscode = Boolean(household.parent_pin_hash);
 
       const { data: rawProfiles } = await supabase
-        .from("child_profiles")
-        .select("id, nickname, avatar_id, birth_date, pin_hash")
+        .from("children")
+        .select("id, nickname, avatar, birth_date, pin_hash")
         .eq("household_id", household.id)
         .order("created_at", { ascending: true });
 
@@ -41,7 +41,7 @@ export default async function SelectProfilePage() {
         profiles = rawProfiles.map((p) => ({
           id: p.id,
           nickname: p.nickname,
-          avatarId: p.avatar_id,
+          avatarId: p.avatar,
           birthDate: p.birth_date,
           ageBand: deriveAgeBand(p.birth_date),
           hasPin: Boolean(p.pin_hash),

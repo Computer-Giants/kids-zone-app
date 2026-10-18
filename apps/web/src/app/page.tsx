@@ -7,6 +7,7 @@ import {
   BookOpen,
   Button,
   Crown,
+  DailyReviewCard,
   Gamepad2,
   HelpCircle,
   type LambMood,
@@ -77,6 +78,13 @@ export default function Home() {
             Tap the lamb to change mood & hop!
           </span>
         </div>
+      </section>
+
+      {/* Daily Spaced Repetition Review Warmup */}
+      <section className="w-full">
+        <Link href="/review" className="text-decoration-none focus-accessible block rounded-2xl">
+          <DailyReviewCard dueCount={3} onStartReview={() => {}} />
+        </Link>
       </section>
 
       {/* Interactive Guide Companion Showcase */}
@@ -198,6 +206,19 @@ export default function Home() {
               description="Bedtime stories, virtues, and Gospel parables with beautiful drawings."
               icon={<BookOpen className="text-indigo-deep h-8 w-8" />}
               badge="Stories"
+            />
+          </Link>
+
+          <Link
+            href="/leaderboard"
+            className="focus-accessible text-decoration-none block rounded-3xl"
+          >
+            <SectionCard
+              section="saints"
+              title="Weekly Stars Leaderboard"
+              description="Celebrate faith progress with Catholic friends partitioned by age band."
+              icon={<Crown className="text-yellow-deep h-8 w-8" />}
+              badge="Stars"
             />
           </Link>
 

@@ -187,3 +187,4 @@ export function clearGuestProgress(storage?: Storage): void {
 }
 
 export * from "./rewards";
+export * from "./spaced-repetition";

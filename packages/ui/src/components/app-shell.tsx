@@ -12,6 +12,7 @@ export interface AppShellProps {
   onParentGateClick?: () => void;
   brandSlot?: ReactNode;
   rightSlot?: ReactNode;
+  logoSrc?: string;
   className?: string;
 }
 
@@ -22,6 +23,7 @@ export function AppShell({
   onParentGateClick,
   brandSlot,
   rightSlot,
+  logoSrc = "/images/favicon.svg",
   className,
 }: AppShellProps) {
   return (
@@ -42,6 +44,7 @@ export function AppShell({
           onParentGateClick={onParentGateClick}
           brandSlot={brandSlot}
           rightSlot={rightSlot}
+          logoSrc={logoSrc}
         />
       </div>
 

@@ -64,6 +64,7 @@ export interface TopNavProps {
   onParentGateClick?: () => void;
   brandSlot?: ReactNode;
   rightSlot?: ReactNode;
+  logoSrc?: string;
   className?: string;
 }
 
@@ -73,6 +74,7 @@ export function TopNav({
   onParentGateClick,
   brandSlot,
   rightSlot,
+  logoSrc = "/images/favicon.svg",
   className,
 }: TopNavProps) {
   return (
@@ -98,12 +100,14 @@ export function TopNav({
               className="text-decoration-none focus-accessible group flex items-center gap-2.5 rounded-xl"
               aria-label="Kid Zone Home"
             >
-              {/* Golden Halo Emblem */}
-              <div className="bg-orange-tint border-orange relative flex h-11 w-11 items-center justify-center rounded-2xl border-2 transition-transform group-hover:scale-105">
-                <span className="text-xl" role="img" aria-label="Halo">
-                  😇
-                </span>
-              </div>
+              {/* Kid Zone Logo Mark */}
+              <img
+                src={logoSrc}
+                alt="Kid Zone logo"
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-2xl object-contain transition-transform group-hover:scale-105"
+              />
               <div className="flex flex-col">
                 <span className="font-heading text-ink text-2xl font-black leading-none tracking-tight">
                   Kid<span className="text-orange">Zone</span>

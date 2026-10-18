@@ -19,7 +19,12 @@ describe("Rewards API Routes", () => {
     });
 
     expect(res.status).toBe(200);
-    const json = (await res.json()) as any;
+    const json = (await res.json()) as {
+      success: boolean;
+      guest: boolean;
+      starsEarned: number;
+      streak: { current: number };
+    };
     expect(json.success).toBe(true);
     expect(json.guest).toBe(true);
     expect(json.starsEarned).toBe(2);
