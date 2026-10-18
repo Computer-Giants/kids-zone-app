@@ -53,6 +53,8 @@ export const contentEntity = pgEnum("content_entity", [
   "featured_verse",
   "glossary_term",
   "journey",
+  "church_tour",
+  "church_tour_scene",
 ]);
 
 export const placeKind = pgEnum("place_kind", ["born", "lived", "died", "visited"]);
@@ -118,6 +120,7 @@ export const activityType = pgEnum("activity_type", [
   "puzzle_completed",
   "review_completed",
   "random_quiz_completed",
+  "church_tour_completed",
 ]);
 /** A saved quiz, a random quiz drawn from the question pool, or a daily review round. */
 export const attemptKind = pgEnum("attempt_kind", ["quiz", "random", "review"]);

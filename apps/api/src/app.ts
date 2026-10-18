@@ -11,6 +11,7 @@ import { saints } from "./routes/saints";
 import { leaderboard } from "./routes/leaderboard";
 import { review } from "./routes/review";
 import { telemetry } from "./routes/telemetry";
+import { churchTour } from "./routes/church-tour";
 
 const app = new Hono().basePath("/api");
 
@@ -33,6 +34,7 @@ const routes = app
   .route("/leaderboard", leaderboard)
   .route("/review", review)
   .route("/telemetry", telemetry)
+  .route("/church-tour", churchTour)
   .get("/", (c) => c.json({ name: "api" }));
 
 export type AppType = typeof routes;

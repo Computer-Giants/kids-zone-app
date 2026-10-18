@@ -12,7 +12,8 @@ export interface SeedCoinRule {
     | "prayer_prayed"
     | "lesson_completed"
     | "quiz_completed"
-    | "puzzle_completed";
+    | "puzzle_completed"
+    | "church_tour_completed";
   currency: "star" | "coin";
   amount: number;
   minScore: number | null;
@@ -101,6 +102,15 @@ export const DEFAULT_COIN_RULES: SeedCoinRule[] = [
     minScore: 100,
     firstTimeOnly: false,
     dailyCap: 10,
+  },
+  {
+    code: "church_tour_completed_star",
+    activityType: "church_tour_completed",
+    currency: "star",
+    amount: 5,
+    minScore: null,
+    firstTimeOnly: true,
+    dailyCap: 5,
   },
 ];
 

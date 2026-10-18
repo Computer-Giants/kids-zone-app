@@ -1,19 +1,11 @@
 # 0015. Church Tour Interactive Scenes
 
 **Date**: 2026-10-18
-**Status**: Proposed
+**Status**: In Progress
 
 ## Summary
 
 This specification defines the interactive church tour feature for Kid Zone. Children explore five illustrated rooms of a Catholic church with horizontal pan navigation, tapping glowing halo hot spots on sacred items like the Tabernacle, Altar, and Baptismal Font. Each item opens a calm bottom sheet presenting child friendly explanations tailored by age band, Web Speech audio narration, and practical reverence guidance on how to behave reverently in God's house.
-
-## Context
-
-Catholic churches are filled with rich sacred signs, architecture, and sacred vessels whose spiritual purpose is often unfamiliar to young children. Without guided context, children can feel lost during Mass or treat church visits like ordinary auditoriums.
-
-At the same time, children need to understand that the church building is truly sacred because Jesus is present in the Blessed Sacrament. Reverence is learned by seeing and practicing: genuflecting toward the Tabernacle, blessing oneself with holy water at the entrance, keeping a quiet voice in the nave, and showing honour to the altar.
-
-The learning platform requires an engaging yet reverent digital church tour that runs smoothly on low power devices and phones without requiring heavy 3D rendering engines or video streams. Children must be able to explore freely at their own pace, read or listen to age adapted teaching, link directly to glossary terms, and earn habit stars upon finishing the complete church tour.
 
 ## Requirements
 
@@ -34,49 +26,6 @@ The learning platform requires an engaging yet reverent digital church tour that
 - **AC-7**: Unauthenticated guest learners can explore all five scenes and items freely without database errors or sign in prompts.
 - **AC-8**: Authenticated children who inspect all items across the five scenes can complete the tour, logging an idempotent activity event 'church_tour_completed' and earning 5 stars via default coin rules.
 
-## Options considered
-
-### Option 1: Discrete SVG illustrated scenes with percentage coordinates and bottom sheet modals (Recommended)
-
-Five curated vector scenes representing the Catholic church journey. Each scene features hot spots placed with percentage offsets, opening an accessible bottom sheet containing age adapted copy, reverence notes, and audio playback.
-
-**Pros**:
-
-- Lightweight, fast loading on cheap mobile devices and poor network connections.
-- Clean responsive layout scaling naturally to any viewport aspect ratio.
-- High contrast accessible focus indicators for keyboard and screen reader users.
-
-**Cons**:
-
-- Requires separate curated vector artwork for each room instead of a 360 degree panoramic sphere.
-
-### Option 2: Full 3D WebGL panoramic sphere
-
-An interactive 360 degree camera view using Three.js or WebGL where children drag to rotate around a photographic or rendered church interior.
-
-**Pros**:
-
-- Provides full spatial immersion.
-
-**Cons**:
-
-- Heavy memory and battery drain on mobile phones.
-- Requires external graphics libraries and large texture assets.
-- Harder to navigate for young children aged 3 to 7.
-
-### Option 3: Static picture gallery with bullet points
-
-A photo album page showing church objects in a static list with captions below each image.
-
-**Pros**:
-
-- Simple to build with zero layout logic.
-
-**Cons**:
-
-- Lacks interactive discovery and spatial context of walking through a church.
-- Low engagement for young learners.
-
 ## Decision
 
 **Chosen option**: Option 1: Discrete SVG illustrated scenes with percentage coordinates and bottom sheet modals.
@@ -87,7 +36,7 @@ We will build the church tour as five responsive illustrated vector scenes with 
 
 ## Rationale
 
-Option 1 provides the ideal balance between sacred dignity, mobile performance, and engaging discovery. Catholic children aged 3 to 15 learn best when visual cues match the peaceful, calm atmosphere of a church. Heavy 3D rendering from Option 2 introduces battery drain, complexity, and performance crashes on entry level phones, while static galleries in Option 3 fail to convey the sacred journey from the church doors to the high altar. Option 1 delivers an accessible, responsive experience that honors project design principles.
+See [rationale.md](rationale.md) for context, alternatives considered, decision reasoning, and project references.
 
 ## Feature design
 
@@ -195,12 +144,12 @@ CREATE TABLE church_tour_items (
 
 Following our Tracer Bullet build approach, work proceeds in thin end to end vertical slices:
 
-1. **Database schema and seed data**: Define `churchTourScenes` and `churchTourItems` tables in [`packages/db/src/schema/church-tour.ts`](file:///c:/Users/User/CodeOven/kids-zone-app/packages/db/src/schema/church-tour.ts), export them in [`packages/db/src/schema/index.ts`](file:///c:/Users/User/CodeOven/kids-zone-app/packages/db/src/schema/index.ts), add seed data for the 5 scenes and sacred items, and register the `church_tour_completed` activity type (satisfies **AC-1**, **AC-2**).
-2. **Input validators**: Create Zod schemas for church tour query parameters and completion payloads in [`packages/validators/src/church-tour.ts`](file:///c:/Users/User/CodeOven/kids-zone-app/packages/validators/src/church-tour.ts) (satisfies **AC-8**).
-3. **Backend API routes**: Implement `GET /api/church-tour/scenes`, `GET /api/church-tour/scenes/:slug`, and `POST /api/church-tour/complete` routes in [`apps/api/src/routes/church-tour.ts`](file:///c:/Users/User/CodeOven/kids-zone-app/apps/api/src/routes/church-tour.ts) and mount in Hono application (satisfies **AC-1**, **AC-7**, **AC-8**).
-4. **UI components**: Create `ChurchSceneViewer`, `HotspotButton`, `ChurchItemModal`, and `TourProgressIndicator` in [`packages/ui/src/components/`](file:///c:/Users/User/CodeOven/kids-zone-app/packages/ui/src/components/) with high contrast focus rings, pulsing halos, and audio read aloud (satisfies **AC-2**, **AC-3**, **AC-4**, **AC-5**).
-5. **Web page views**: Build `/church-tour` catalog page and `/church-tour/[slug]` interactive scene viewer in [`apps/web/src/app/church-tour/`](file:///c:/Users/User/CodeOven/kids-zone-app/apps/web/src/app/church-tour/) with smooth horizontal navigation and completion win state (satisfies **AC-1**, **AC-6**, **AC-8**).
-6. **Automated tests**: Add unit tests for API endpoints, coordinate bounds, and completion reward handling in `apps/api` and `packages/validators` (satisfies **AC-2**, **AC-7**, **AC-8**).
+- [x] 1. **Database schema and seed data**: Define `churchTourScenes` and `churchTourItems` tables in [`packages/db/src/schema/church-tour.ts`](file:///c:/Users/User/CodeOven/kids-zone-app/packages/db/src/schema/church-tour.ts), export them in [`packages/db/src/schema/index.ts`](file:///c:/Users/User/CodeOven/kids-zone-app/packages/db/src/schema/index.ts), add seed data for the 5 scenes and sacred items, and register the `church_tour_completed` activity type (satisfies **AC-1**, **AC-2**).
+- [x] 2. **Input validators**: Create Zod schemas for church tour query parameters and completion payloads in [`packages/validators/src/church-tour.ts`](file:///c:/Users/User/CodeOven/kids-zone-app/packages/validators/src/church-tour.ts) (satisfies **AC-8**).
+- [x] 3. **Backend API routes**: Implement `GET /api/church-tour/scenes`, `GET /api/church-tour/scenes/:slug`, and `POST /api/church-tour/complete` routes in [`apps/api/src/routes/church-tour.ts`](file:///c:/Users/User/CodeOven/kids-zone-app/apps/api/src/routes/church-tour.ts) and mount in Hono application (satisfies **AC-1**, **AC-7**, **AC-8**).
+- [x] 4. **UI components**: Create `ChurchSceneViewer`, `HotspotButton`, `ChurchItemModal`, and `TourProgressIndicator` in [`packages/ui/src/components/`](file:///c:/Users/User/CodeOven/kids-zone-app/packages/ui/src/components/) with high contrast focus rings, pulsing halos, and audio read aloud (satisfies **AC-2**, **AC-3**, **AC-4**, **AC-5**).
+- [x] 5. **Web page views**: Build `/church-tour` catalog page and `/church-tour/[slug]` interactive scene viewer in [`apps/web/src/app/church-tour/`](file:///c:/Users/User/CodeOven/kids-zone-app/apps/web/src/app/church-tour/) with smooth horizontal navigation and completion win state (satisfies **AC-1**, **AC-6**, **AC-8**).
+- [x] 6. **Automated tests**: Add unit tests for API endpoints, coordinate bounds, and completion reward handling in `apps/api` and `packages/validators` (satisfies **AC-2**, **AC-7**, **AC-8**).
 
 ## Consequences
 
@@ -212,10 +161,3 @@ Following our Tracer Bullet build approach, work proceeds in thin end to end ver
 
 - Consider adding specialized historic church styles (such as Romanesque basilicas, Byzantine domes, and mission chapels) in a future content expansion.
 - Add optional interactive liturgical color switcher showing how the altar linens and vestments change across seasons.
-
-## References
-
-- Project rules: [`.agents/AGENTS.md`](file:///c:/Users/User/CodeOven/kids-zone-app/.agents/AGENTS.md) (Priest reviewer workflow, append only ledger, zero child tracking)
-- Data model: [`docs/data-model.md`](file:///c:/Users/User/CodeOven/kids-zone-app/docs/data-model.md) (Phase 2 Inside the Church tour specifications)
-- Design tokens: [`docs/design.json`](file:///c:/Users/User/CodeOven/kids-zone-app/docs/design.json) (48px tap targets, calm colors, gentle lamb feedback)
-- Liturgical practice: General Instruction of the Roman Missal (GIRM) guidelines on sacred furnishings and reverent posture

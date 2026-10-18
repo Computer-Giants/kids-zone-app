@@ -6,6 +6,7 @@ import {
   AnimatedLambGuide,
   BookOpen,
   Button,
+  Compass,
   Crown,
   DailyReviewCard,
   Gamepad2,
@@ -219,6 +220,19 @@ export default function Home() {
               description="Celebrate faith progress with Catholic friends partitioned by age band."
               icon={<Crown className="text-yellow-deep h-8 w-8" />}
               badge="Stars"
+            />
+          </Link>
+
+          <Link
+            href="/church-tour"
+            className="focus-accessible text-decoration-none block rounded-3xl"
+          >
+            <SectionCard
+              section="saints"
+              title="Inside the Church Tour"
+              description="Explore the five sacred rooms of a Catholic church, tap holy objects, and learn reverence."
+              icon={<Compass className="text-yellow-deep h-8 w-8" />}
+              badge="Tour"
             />
           </Link>
 

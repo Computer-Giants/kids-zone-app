@@ -7,3 +7,4 @@ export * from "./saints";
 export * from "./catechism";
 export * from "./fun";
 export * from "./progress";
+export * from "./church-tour";

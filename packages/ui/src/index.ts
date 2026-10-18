@@ -56,6 +56,23 @@ export {
   type LeaderboardUserItem,
 } from "./components/leaderboard-list";
 export { DailyReviewCard, type DailyReviewCardProps } from "./components/daily-review-card";
+export { HotspotButton, type HotspotButtonProps } from "./components/hotspot-button";
+export {
+  ChurchSceneViewer,
+  type ChurchSceneViewerProps,
+  type SceneViewerItem,
+} from "./components/church-scene-viewer";
+export {
+  ChurchItemModal,
+  type ChurchItemModalProps,
+  type ChurchItemData,
+} from "./components/church-item-modal";
+export {
+  TourProgressIndicator,
+  type TourProgressIndicatorProps,
+  type SceneSummaryItem,
+} from "./components/tour-progress-indicator";
+export { ChurchSceneIllustration, ChurchItemBadge } from "./components/church-tour-illustrations";
 export { cn } from "./lib/utils";
 export {
   ArrowLeft,

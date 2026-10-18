@@ -344,3 +344,4 @@ export * from "./puzzle";
 export * from "./rewards";
 export * from "./leaderboard";
 export * from "./telemetry";
+export * from "./church-tour";

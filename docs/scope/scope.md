@@ -292,12 +292,12 @@ Self hosted anonymous telemetry pipeline and household habit metrics, adhering t
 Explore Catholic church architecture and sacred objects in five illustrated scenes with interactive halo hotspots, age adapted explanations, and reverence guidance. (Phase 2)
 **Done when:** children can navigate between five illustrated scenes, tap glowing halo spots on sacred items, view age adapted explanations and reverence notes, listen to Web Speech narration, link to glossary terms, and complete the tour to earn habit stars. (basis: docs/data-model.md)
 
-- [x] Design it (spec): [0015](../specs/0015-church-tour-interactive-scenes.md)
-- [ ] Build it: /develop church tour interactive scenes
-  - [ ] Database schema and seed data in packages/db (AC-1, AC-2)
-  - [ ] Input validators and API routes in packages/validators and apps/api (AC-1, AC-7, AC-8)
-  - [ ] UI components with audio and reverence guidance in packages/ui (AC-2, AC-3, AC-4, AC-5)
-  - [ ] Web viewer page with smooth horizontal navigation in apps/web (AC-1, AC-6, AC-8)
+- [x] Design it (spec): [0015](../specs/0015-church-tour-interactive-scenes/index.md)
+- [x] Build it: /develop church tour interactive scenes
+  - [x] Database schema and seed data in packages/db (AC-1, AC-2)
+  - [x] Input validators and API routes in packages/validators and apps/api (AC-1, AC-7, AC-8)
+  - [x] UI components with audio and reverence guidance in packages/ui (AC-2, AC-3, AC-4, AC-5)
+  - [x] Web viewer page with smooth horizontal navigation in apps/web (AC-1, AC-6, AC-8)
 - [ ] Verify it: /check verify church tour interactive scenes
 - [ ] Test it: /test church tour interactive scenes
       Code in `packages/db/`, `packages/validators/`, `apps/api/`, `packages/ui/`, and `apps/web/`

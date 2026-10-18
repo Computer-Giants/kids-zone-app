@@ -35,4 +35,5 @@ export * from "./data/saints";
 export * from "./data/quizzes";
 export * from "./data/puzzles";
 export * from "./data/coin-rules";
+export * from "./data/church-tour";
 export { seedBibleData } from "./seed";
