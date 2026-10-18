@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.0",
-    "@commitlint/config-conventional": "^19.6.0",
+    "@commitlint/config-conventional": "^21.2.3",
     "@kidzone/config": "workspace:*",
     "husky": "^9.1.7",
     "knip": "^5.40.0",
