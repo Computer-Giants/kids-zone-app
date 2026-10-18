@@ -464,6 +464,22 @@ export function HomeView({ learner }: HomeViewProps) {
                 Your browser does not support playing this video.
               </video>
             </div>
+
+            {/* Video Chapter Highlights */}
+            <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-2 pt-2">
+              <span className="border-sand-border font-heading text-ink shadow-xs rounded-xl border bg-white px-3 py-1 text-xs font-bold">
+                0:00 Living Lamb Guide
+              </span>
+              <span className="border-sand-border font-heading text-ink shadow-xs rounded-xl border bg-white px-3 py-1 text-xs font-bold">
+                0:45 Bible Read Aloud
+              </span>
+              <span className="border-sand-border font-heading text-ink shadow-xs rounded-xl border bg-white px-3 py-1 text-xs font-bold">
+                1:20 Inside Church Tour
+              </span>
+              <span className="border-sand-border font-heading text-ink shadow-xs rounded-xl border bg-white px-3 py-1 text-xs font-bold">
+                1:55 Parent Gate & Safety
+              </span>
+            </div>
           </div>
         </div>
       </section>
