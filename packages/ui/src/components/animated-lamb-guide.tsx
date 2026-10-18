@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Sparkles, X } from "lucide-react";
 import type { LambMood, LambSize } from "./mascot-lamb";
+import { useTypewriter } from "../hooks/use-typewriter";
 import { cn } from "../lib/utils";
 
 export interface AnimatedLambGuideProps {
@@ -9,7 +11,7 @@ export interface AnimatedLambGuideProps {
   size?: LambSize;
   speechText?: string;
   speechSpeaker?: string;
-  speechPosition?: "top" | "right" | "bottom" | "left";
+  speechPosition?: "top" | "right" | "bottom" | "left" | "tooltip";
   onTap?: () => void;
   onSpeechDismiss?: () => void;
   interactive?: boolean;
@@ -36,10 +38,29 @@ export function AnimatedLambGuide({
 }: AnimatedLambGuideProps) {
   const [currentMood, setCurrentMood] = useState<LambMood>(initialMood);
   const [isHopping, setIsHopping] = useState(false);
+  const [mouthOpen, setMouthOpen] = useState(false);
   const { width, height } = sizePixels[size];
 
   // Active mood prioritizes prop if supplied and updated
   const activeMood = initialMood !== "happy" ? initialMood : currentMood;
+
+  // Typewriter animation synchronized with speech text
+  const { displayedText, isTyping } = useTypewriter(speechText, {
+    speed: 25,
+    enabled: interactive,
+  });
+
+  // Talking mouth changes geometric shape when speaking (zero vertical bouncing)
+  useEffect(() => {
+    if (!isTyping) {
+      setMouthOpen(false);
+      return;
+    }
+    const interval = setInterval(() => {
+      setMouthOpen((prev) => !prev);
+    }, 180);
+    return () => clearInterval(interval);
+  }, [isTyping]);
 
   const handleTap = () => {
     if (!interactive) return;
@@ -72,46 +93,98 @@ export function AnimatedLambGuide({
         className,
       )}
     >
-      {/* Speech Bubble */}
+      {/* Speech Bubble with SVG Cloud Shape & Trail of Smaller Bubbles */}
       {speechText && (
         <div
           role="status"
-          aria-live="polite"
           className={cn(
-            "text-ink border-sand-border shadow-sticker-orange relative z-20 mb-3 max-w-xs rounded-2xl border-2 bg-white p-3.5 transition-all sm:max-w-sm sm:p-4",
-            speechPosition === "top" && "mb-3",
-            speechPosition === "bottom" && "order-last mt-3",
+            "relative z-20 mb-4 max-w-xs px-6 py-5 transition-all sm:max-w-sm sm:px-7 sm:py-6",
+            speechPosition === "tooltip" &&
+              "w-68 sm:w-76 pointer-events-auto absolute bottom-[108%] left-1/2 mb-2 -translate-x-1/2",
+            speechPosition === "top" && "mb-5",
+            speechPosition === "bottom" && "order-last mt-5",
           )}
         >
-          <div className="mb-1 flex items-center justify-between gap-2">
-            <span className="text-orange-deep font-heading text-xs font-bold uppercase tracking-wider">
-              {speechSpeaker}
-            </span>
+          {/* Cloud SVG Backdrop */}
+          <svg
+            viewBox="0 0 340 180"
+            preserveAspectRatio="none"
+            className="pointer-events-none absolute -inset-x-3 -inset-y-3 h-[calc(100%+24px)] w-[calc(100%+24px)] overflow-visible drop-shadow-[0_8px_20px_rgba(43,45,66,0.08)]"
+            aria-hidden="true"
+          >
+            <path
+              d="M 52 46
+                 C 40 24, 72 10, 102 18
+                 C 134 4, 186 4, 218 18
+                 C 248 8, 290 20, 300 48
+                 C 332 60, 338 102, 316 126
+                 C 328 148, 298 172, 270 166
+                 C 238 182, 186 182, 154 168
+                 C 122 182, 70 178, 50 162
+                 C 18 164, -2 136, 6 108
+                 C -4 80, 18 52, 52 46 Z"
+              fill="#ffffff"
+              stroke="#e5dfd3"
+              strokeWidth="2.75"
+              strokeLinejoin="round"
+            />
+          </svg>
+
+          {/* Visually hidden container for screen reader announcements without per-character noise */}
+          <span className="sr-only" aria-live="polite">
+            {speechText}
+          </span>
+          <div className="relative z-10 mb-1 flex items-center justify-between gap-2">
+            <div className="flex items-center gap-1.5">
+              <Sparkles className="text-orange-deep h-3.5 w-3.5" />
+              <span className="text-orange-deep font-heading text-xs font-bold uppercase tracking-wider">
+                {speechSpeaker}
+              </span>
+            </div>
             {onSpeechDismiss && (
               <button
                 type="button"
                 onClick={onSpeechDismiss}
-                className="text-ink-soft hover:text-ink cursor-pointer rounded px-1.5 py-0.5 text-xs font-bold"
+                className="text-ink-soft hover:text-ink hover:bg-sand/60 focus-visible:outline-blue-deep cursor-pointer rounded-lg p-1 focus-visible:outline-2"
                 aria-label="Dismiss guide tip"
               >
-                ✕
+                <X className="h-3.5 w-3.5" />
               </button>
             )}
           </div>
-          <p className="font-body text-sm font-medium leading-relaxed sm:text-base">{speechText}</p>
+          <p
+            className="font-body text-ink relative z-10 text-sm font-semibold leading-relaxed sm:text-base"
+            aria-hidden="true"
+          >
+            {displayedText}
+          </p>
 
-          {/* Speech bubble pointer arrow */}
-          {speechPosition === "top" && (
-            <div
+          {/* Speech bubble trail: series of smaller SVG bubbles connecting cloud to lamb's head */}
+          {(speechPosition === "top" || speechPosition === "tooltip") && (
+            <svg
+              viewBox="0 0 30 38"
+              className="pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 overflow-visible drop-shadow-[0_2px_4px_rgba(43,45,66,0.06)]"
+              width="24"
+              height="30"
               aria-hidden="true"
-              className="border-sand-border absolute -bottom-2 left-1/2 h-3.5 w-3.5 -translate-x-1/2 rotate-45 border-b-2 border-r-2 bg-white"
-            />
+            >
+              <circle cx="15" cy="6" r="6" fill="#ffffff" stroke="#e5dfd3" strokeWidth="2" />
+              <circle cx="13" cy="18" r="4" fill="#ffffff" stroke="#e5dfd3" strokeWidth="1.75" />
+              <circle cx="11" cy="27" r="2.5" fill="#ffffff" stroke="#e5dfd3" strokeWidth="1.5" />
+            </svg>
           )}
           {speechPosition === "bottom" && (
-            <div
+            <svg
+              viewBox="0 0 30 38"
+              className="pointer-events-none absolute -top-7 left-1/2 -translate-x-1/2 rotate-180 overflow-visible drop-shadow-[0_2px_4px_rgba(43,45,66,0.06)]"
+              width="24"
+              height="30"
               aria-hidden="true"
-              className="border-sand-border absolute -top-2 left-1/2 h-3.5 w-3.5 -translate-x-1/2 rotate-45 border-l-2 border-t-2 bg-white"
-            />
+            >
+              <circle cx="15" cy="6" r="6" fill="#ffffff" stroke="#e5dfd3" strokeWidth="2" />
+              <circle cx="13" cy="18" r="4" fill="#ffffff" stroke="#e5dfd3" strokeWidth="1.75" />
+              <circle cx="11" cy="27" r="2.5" fill="#ffffff" stroke="#e5dfd3" strokeWidth="1.5" />
+            </svg>
           )}
         </div>
       )}
@@ -290,45 +363,68 @@ export function AnimatedLambGuide({
             </g>
           )}
 
-          {/* Expressive Mouth */}
-          {activeMood === "happy" && (
-            <path
-              d="M 54 64 Q 60 71 66 64"
-              fill="none"
-              stroke="#2b2d42"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-            />
-          )}
+          {/* Expressive Mouth: Geometric shape changes when talking (zero vertical bounce) */}
+          {mouthOpen && isTyping ? (
+            <g>
+              <ellipse
+                cx="60"
+                cy="65"
+                rx="4.5"
+                ry="3.5"
+                fill="#ec4466"
+                stroke="#2b2d42"
+                strokeWidth="2"
+              />
+              <path
+                d="M 57.5 66 Q 60 64 62.5 66"
+                fill="none"
+                stroke="#ffffff"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+              />
+            </g>
+          ) : (
+            <>
+              {activeMood === "happy" && (
+                <path
+                  d="M 54 64 Q 60 71 66 64"
+                  fill="none"
+                  stroke="#2b2d42"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+              )}
 
-          {isThinking && (
-            <path
-              d="M 55 64 Q 60 67 66 63"
-              fill="none"
-              stroke="#2b2d42"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-            />
-          )}
+              {isThinking && (
+                <path
+                  d="M 55 64 Q 60 67 66 63"
+                  fill="none"
+                  stroke="#2b2d42"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+              )}
 
-          {isCelebrating && (
-            <path
-              d="M 53 63 Q 60 74 67 63 Z"
-              fill="#ec4466"
-              stroke="#2b2d42"
-              strokeWidth="2"
-              strokeLinejoin="round"
-            />
-          )}
+              {isCelebrating && (
+                <path
+                  d="M 53 63 Q 60 74 67 63 Z"
+                  fill="#ec4466"
+                  stroke="#2b2d42"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                />
+              )}
 
-          {isEncouraging && (
-            <path
-              d="M 53 64 Q 60 70 67 64"
-              fill="none"
-              stroke="#2b2d42"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-            />
+              {isEncouraging && (
+                <path
+                  d="M 53 64 Q 60 70 67 64"
+                  fill="none"
+                  stroke="#2b2d42"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+              )}
+            </>
           )}
         </svg>
       </button>

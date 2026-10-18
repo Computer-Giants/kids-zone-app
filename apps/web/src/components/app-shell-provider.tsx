@@ -99,6 +99,15 @@ export function AppShellProvider({ children, initialLearner = null }: AppShellPr
         </a>
       )}
 
+      {/* About Mission Link */}
+      <a
+        href="/about"
+        aria-label="About our Chaplain and community mission"
+        className="font-heading text-ink-soft hover:text-orange-deep hover:bg-sand/40 focus-accessible text-decoration-none border-sand-border hidden min-h-[48px] items-center gap-1.5 rounded-xl border bg-white px-3 py-2 text-xs font-bold transition-all md:flex"
+      >
+        <span>About</span>
+      </a>
+
       {/* Parent Gate Link */}
       <a
         href="/parent"

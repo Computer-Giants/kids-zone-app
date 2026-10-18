@@ -139,12 +139,14 @@ export function TopNav({
                     }}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "font-heading focus-accessible text-decoration-none relative flex min-h-[48px] items-center gap-2 rounded-xl px-3.5 py-2.5 text-base font-bold transition-all",
+                      "font-heading focus-accessible text-decoration-none relative flex min-h-[48px] items-center gap-2 rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all",
                       item.colorClass,
-                      isActive ? "text-ink bg-sand/60 font-black" : "text-ink hover:bg-sand/30",
+                      isActive
+                        ? "text-ink bg-sand/60 text-sm font-black"
+                        : "text-ink hover:bg-sand/30",
                     )}
                   >
-                    <Icon className="h-5 w-5" aria-hidden="true" />
+                    <Icon className="h-4 w-4" aria-hidden="true" />
                     <span>{item.label}</span>
 
                     {/* Active underline indicator */}

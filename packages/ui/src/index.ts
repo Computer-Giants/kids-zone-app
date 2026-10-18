@@ -73,6 +73,8 @@ export {
   type SceneSummaryItem,
 } from "./components/tour-progress-indicator";
 export { ChurchSceneIllustration, ChurchItemBadge } from "./components/church-tour-illustrations";
+export { WaveDivider, type WaveDividerProps } from "./components/wave-divider";
+export { useTypewriter, type UseTypewriterOptions } from "./hooks/use-typewriter";
 export { cn } from "./lib/utils";
 export {
   ArrowLeft,
@@ -80,14 +82,18 @@ export {
   BookOpen,
   Calendar,
   Check,
+  CheckCircle2,
   ChevronLeft,
   ChevronRight,
   Coins,
   Compass,
+  Copy,
+  Cpu,
   Crown,
   Flame,
   Gamepad2,
   Grid,
+  Heart,
   HeartHandshake,
   HelpCircle,
   House,
@@ -95,12 +101,14 @@ export {
   Lock,
   MapPin,
   MessageCircle,
+  Music,
   Pause,
   Play,
   Plus,
   RotateCcw,
   ScrollText,
   Search,
+  Share2,
   Shield,
   ShieldAlert,
   ShieldCheck,
@@ -108,6 +116,7 @@ export {
   SpellCheck,
   Star,
   Trash2,
+  Trophy,
   Users,
   Volume2,
   VolumeX,

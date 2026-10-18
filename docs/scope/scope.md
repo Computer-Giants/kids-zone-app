@@ -9,29 +9,31 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 
 ## At a glance
 
-| #   | Feature                                     | Phase      | Status      |
-| --- | ------------------------------------------- | ---------- | ----------- |
-| 1   | Monorepo tooling and workspace standards    | Foundation | done        |
-| 2   | Core database schema and migrations         | Foundation | done        |
-| 3   | Design system and UI foundation             | Foundation | done        |
-| 4   | Application shell and animated guide mascot | Foundation | done        |
-| 4b  | Brand assets and SEO metadata               | Foundation | done        |
-| 5   | Parent authentication and household setup   | Slice 1    | done        |
-| 6   | Child profiles and parent gate              | Slice 1    | done        |
-| 7   | Profile switcher and guest mode             | Slice 1    | done        |
-| 8   | Bible reader and verse of the day           | Slice 2    | done        |
-| 9   | Saint of the day and life stories           | Slice 2    | done        |
-| 10  | Quizzes and lamb guide feedback             | Slice 3    | done        |
-| 11  | Church puzzles engine                       | Slice 3    | done        |
-| 12  | Rewards ledger and streak tracking          | Slice 4    | done        |
-| 13  | Leaderboard and daily review                | Slice 4    | done        |
-| 14  | Privacy first analytics and habit tracking  | Slice 4    | done        |
-| 15  | Church tour interactive scenes              | Phase 2    | in-progress |
-| 16  | Digital colouring studio                    | Deferred   | planned     |
-| 17  | Challenges and parish prize shop            | Deferred   | planned     |
-| 18  | Moderated community chat                    | Deferred   | planned     |
-| 19  | Faith AI guide                              | Deferred   | planned     |
-| 20  | Throwback family memories                   | Deferred   | planned     |
+| #   | Feature                                            | Phase      | Status      |
+| --- | -------------------------------------------------- | ---------- | ----------- |
+| 1   | Monorepo tooling and workspace standards           | Foundation | done        |
+| 2   | Core database schema and migrations                | Foundation | done        |
+| 3   | Design system and UI foundation                    | Foundation | done        |
+| 4   | Application shell and animated guide mascot        | Foundation | done        |
+| 4b  | Brand assets and SEO metadata                      | Foundation | done        |
+| 5   | Parent authentication and household setup          | Slice 1    | done        |
+| 6   | Child profiles and parent gate                     | Slice 1    | done        |
+| 7   | Profile switcher and guest mode                    | Slice 1    | done        |
+| 8   | Bible reader and verse of the day                  | Slice 2    | done        |
+| 9   | Saint of the day and life stories                  | Slice 2    | done        |
+| 10  | Quizzes and lamb guide feedback                    | Slice 3    | done        |
+| 11  | Church puzzles engine                              | Slice 3    | done        |
+| 12  | Rewards ledger and streak tracking                 | Slice 4    | done        |
+| 13  | Leaderboard and daily review                       | Slice 4    | done        |
+| 14  | Privacy first analytics and habit tracking         | Slice 4    | done        |
+| 15  | Church tour interactive scenes                     | Phase 2    | in-progress |
+| 15b | Homepage storybook redesign and motion             | Phase 2    | in-progress |
+| 15c | Chaplain about, community gallery, and support hub | Phase 2    | in-progress |
+| 16  | Digital colouring studio                           | Deferred   | planned     |
+| 17  | Challenges and parish prize shop                   | Deferred   | planned     |
+| 18  | Moderated community chat                           | Deferred   | planned     |
+| 19  | Faith AI guide                                     | Deferred   | planned     |
+| 20  | Throwback family memories                          | Deferred   | planned     |
 
 ---
 
@@ -301,6 +303,33 @@ Explore Catholic church architecture and sacred objects in five illustrated scen
 - [ ] Verify it: /check verify church tour interactive scenes
 - [ ] Test it: /test church tour interactive scenes
       Code in `packages/db/`, `packages/validators/`, `apps/api/`, `packages/ui/`, and `apps/web/`
+
+### 15b. Homepage storybook redesign and motion architecture · in progress
+
+Modernize the web home page with natural storybook wave transitions, unconstrained floating Guide Lamb with interaction triggered typewriter mouth movement, database grounded habit analytics, auth aware call to action, and motion spring transitions. (Phase 2)
+**Done when:** the homepage displays auth aware primary hero routing, Guide Lamb with floating tooltip speech and interactive talking mouth, authentic habit analytics cards, floating app download badge clearing mobile navigation, and spring card expansion transitions. (basis: docs/design.json)
+
+- [x] Design it (spec): [0016](../specs/0016-homepage-storybook-redesign-and-motion/index.md)
+- [x] Build it: /develop homepage storybook redesign and motion architecture
+  - [x] Motion package setup and wave divider component in packages/ui (AC-5, AC-6)
+  - [x] Floating Guide Lamb with typewriter mouth sync in packages/ui (AC-2, AC-8)
+  - [x] Floating app download banner with session dismissal in apps/web (AC-3)
+  - [x] Grounded habit analytics hub and auth aware hero in apps/web (AC-1, AC-4)
+  - [x] Storybook home page integration and card expansion motion in apps/web (AC-5, AC-6, AC-7, AC-8)
+- [ ] Verify it: /check verify homepage storybook redesign and motion architecture
+- [ ] Test it: /test homepage storybook redesign and motion architecture
+      Code in `packages/ui/` and `apps/web/`
+
+### 15c. Chaplain about, community gallery, and support hub · in progress
+
+Showcase platform chaplain Fr. Michael Ifeanyi Ezeora and his pastoral mission to form children in Catholic faith and life skills through free community classes in computer science, music, athletics, and catechesis. Features an outreach photo gallery, transparent support card with one tap bank account copying, and Catholic social sharing. (Phase 2)
+**Done when:** homepage and standalone `/about` page render Fr. Michael's portrait and pastoral vision, outreach photo gallery, bank support card with one tap clipboard copy, and family social sharing triggers. (basis: docs/specs/0017-chaplain-about-and-community-support.md)
+
+- [x] Design it (spec): [0017](../specs/0017-chaplain-about-and-community-support.md)
+- [x] Build it: /develop chaplain about, community gallery, and support hub
+- [ ] Verify it: /check verify chaplain about, community gallery, and support hub
+- [ ] Test it: /test chaplain about, community gallery, and support hub
+      Code in `apps/web/` and `packages/ui/`
 
 ### 16. Digital colouring studio
 
